@@ -41,12 +41,20 @@ const HomeNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Home',
-        navigationOptions: ({ navigation}) => ({
+        navigationOptions: ({ navigation }) => ({
             headerRight: (
                 <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                    
+
                 </TouchableOpacity>
             ),
+            headerStyle: {
+                backgroundColor: '#89da59',
+            },
+            headerTintColor: '#ff420e',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 30,
+            },
         }),
     }
 );
@@ -57,6 +65,25 @@ const LoginNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'LoginScreen',
+        navigationOptions: ({ navigation }) => ({
+            headerLeft: (
+                <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                    <Image
+                        style={{ marginLeft: 20, width: 40, height: 40 }}
+                        source={require('/appbanhang/Image/Hamber.png')}
+
+                    />
+                </TouchableOpacity>
+            ),
+            headerStyle: {
+                backgroundColor: '#89da59',
+            },
+            headerTintColor: '#ff420e',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize: 30,
+            },
+        }),
     }
 );
 
@@ -66,6 +93,25 @@ const OrderNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Order',
+        navigationOptions: ({ navigation }) => ({
+            headerLeft: (
+                <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+                    <Image
+                        style={{ marginLeft: 20, width: 40, height: 40 }}
+                        source={require('/appbanhang/Image/Hamber.png')}
+
+                    />
+                </TouchableOpacity>
+            ),
+            headerStyle: {
+                backgroundColor: '#89da59',
+            },
+            headerTintColor: '#ff420e',
+            headerTitleStyle: {
+                fontWeight: 'bold',
+                fontSize:30,
+            },
+        }),
     }
 );
 

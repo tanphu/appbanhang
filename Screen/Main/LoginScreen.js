@@ -3,17 +3,8 @@ import { StyleSheet, View , TouchableOpacity , Image } from 'react-native';
 import Authentication from './Authentication/Authentication';
 import User from './Authentication/User'
 class LoginScreen extends React.Component {
-    static navigationOptions = ({ navigation}) => ({
+    static navigationOptions = () => ({
         title: "Đăng nhập",
-        headerLeft: (
-          <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-            <Image
-              style={{ marginLeft: 20, width: 40, height: 40 }}
-              source={require('/appbanhang/Image/Hamber.png')}
-    
-            />
-          </TouchableOpacity>
-        ),
       })
     constructor(props) {
         super(props);
