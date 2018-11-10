@@ -1,5 +1,6 @@
 import React from 'react';
-import { TouchableOpacity, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { Feather } from '@expo/vector-icons';
 import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 import HomeScreen from './Main/HomeScreen';
 import OrderHistory from './Main/OrderHistory';
@@ -14,6 +15,11 @@ import Cart from './Main/Cart';
 import Search from './Main/Search';
 
 class MainScreen extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = { colorHeader: 'red' };
+    }
     render() {
         return (
             <AppDrawerNavigator />
@@ -22,10 +28,7 @@ class MainScreen extends React.Component {
     }
 }
 
-
 export default MainScreen;
-
-
 
 const HomeNavigator = createStackNavigator(
     {
@@ -43,9 +46,14 @@ const HomeNavigator = createStackNavigator(
         initialRouteName: 'Home',
         navigationOptions: ({ navigation }) => ({
             headerRight: (
-                <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-
-                </TouchableOpacity>
+                <View style={styles.headerR}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                </View>
             ),
             headerStyle: {
                 backgroundColor: '#89da59',
@@ -53,7 +61,7 @@ const HomeNavigator = createStackNavigator(
             headerTintColor: '#ff420e',
             headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 30,
+                fontSize: 20,
             },
         }),
     }
@@ -62,18 +70,21 @@ const HomeNavigator = createStackNavigator(
 const LoginNavigator = createStackNavigator(
     {
         LoginScreen: LoginScreen,
+        Favorite: Favorite,
+        Cart: Cart,
     },
     {
         initialRouteName: 'LoginScreen',
         navigationOptions: ({ navigation }) => ({
-            headerLeft: (
-                <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                    <Image
-                        style={{ marginLeft: 20, width: 40, height: 40 }}
-                        source={require('/appbanhang/Image/Hamber.png')}
-
-                    />
-                </TouchableOpacity>
+            headerRight: (
+                <View style={styles.headerR}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                </View>
             ),
             headerStyle: {
                 backgroundColor: '#89da59',
@@ -81,7 +92,7 @@ const LoginNavigator = createStackNavigator(
             headerTintColor: '#ff420e',
             headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize: 30,
+                fontSize: 20,
             },
         }),
     }
@@ -90,18 +101,21 @@ const LoginNavigator = createStackNavigator(
 const OrderNavigator = createStackNavigator(
     {
         Order: OrderHistory,
+        Favorite: Favorite,
+        Cart: Cart,
     },
     {
         initialRouteName: 'Order',
         navigationOptions: ({ navigation }) => ({
-            headerLeft: (
-                <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-                    <Image
-                        style={{ marginLeft: 20, width: 40, height: 40 }}
-                        source={require('/appbanhang/Image/Hamber.png')}
-
-                    />
-                </TouchableOpacity>
+            headerRight: (
+                <View style={styles.headerR}>
+                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                    </TouchableOpacity>
+                </View>
             ),
             headerStyle: {
                 backgroundColor: '#89da59',
@@ -109,15 +123,27 @@ const OrderNavigator = createStackNavigator(
             headerTintColor: '#ff420e',
             headerTitleStyle: {
                 fontWeight: 'bold',
-                fontSize:30,
+                fontSize: 20,
             },
         }),
     }
 );
 
-const AppDrawerNavigator = createDrawerNavigator({
-    Home: HomeNavigator,
-    Order: OrderNavigator,
-    Login: LoginNavigator,
+const AppDrawerNavigator = createDrawerNavigator(
+    {
+        Home: HomeNavigator,
+        Oder: OrderNavigator,
+        Login: LoginNavigator,
 
-})
+    },
+    {
+        initialRouteName: 'Home',
+    }
+)
+
+const styles = StyleSheet.create({
+    headerR: {
+        flex: 1,
+        flexDirection: 'row',
+    },
+});

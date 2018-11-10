@@ -1,10 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View , Image , TouchableOpacity } from 'react-native';
-class OrderHistory extends React.Component {
-  static navigationOptions = () => ({
-    title: "Lịch sử",
-  })
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
+class OrderHistory extends React.Component {
+  static navigationOptions = ({ navigation }) => ({
+    title: "Lịch sử",
+    headerLeft: (
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
+        <Feather name='menu' color='red' size={30} style={{ marginLeft: 20 }} />
+      </TouchableOpacity>
+    ),
+  })
 
   render() {
     return (

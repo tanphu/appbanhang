@@ -2,6 +2,10 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 class Cart extends React.Component {
+  static navigationOptions = {
+    title: "Giỏ hàng",
+
+  };
   render() {
     return (
       <View style={styles.container}>

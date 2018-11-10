@@ -1,18 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { colorHeader: 'red' };
+  }
   static navigationOptions = ({ navigation }) => ({
     title: "Trang chủ",
     headerLeft: (
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-        <Image
-          style={{ marginLeft: 20, width: 40, height: 40 }}
-          source={require('/appbanhang/Image/Hamber.png')}
-
-        />
+          <Feather name='menu' color='red' size={30} style={{ marginLeft: 20 }} />
       </TouchableOpacity>
-    ),
+  ),
   })
 
   _Woman = () => {

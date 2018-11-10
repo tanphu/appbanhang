@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 class SignIn extends React.Component {
+  static navigationOptions = () => ({
+    title: "Đăng nhập",
+  })
   render() {
     return (
       <View style={styles.container}>
