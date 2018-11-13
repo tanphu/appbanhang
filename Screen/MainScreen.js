@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons';
-import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from './Main/HomeScreen';
 import OrderHistory from './Main/OrderHistory';
 import LoginScreen from './Main/LoginScreen';
@@ -129,6 +129,16 @@ const OrderNavigator = createStackNavigator(
     }
 );
 
+const CustomDrawerComponent = (props) => (
+    <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.drawerH}>
+        <Image source={require('/appbanhang/Image/drawerImage.jpg')}/>
+        </View>
+        <ScrollView>
+            <DrawerItems {...props}/>
+        </ScrollView>
+    </SafeAreaView>
+)
 const AppDrawerNavigator = createDrawerNavigator(
     {
         Home: HomeNavigator,
@@ -138,6 +148,7 @@ const AppDrawerNavigator = createDrawerNavigator(
     },
     {
         initialRouteName: 'Home',
+        contentComponent: CustomDrawerComponent
     }
 )
 
@@ -146,4 +157,14 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
+    drawerH: {
+        height: 150,
+        backgroundColor: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    imageH: {
+        height: 120,
+        width: 120,
+    }
 });
