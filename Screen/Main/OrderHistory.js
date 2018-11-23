@@ -7,7 +7,7 @@ class OrderHistory extends React.Component {
     title: "Lịch sử",
     headerLeft: (
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-        <Feather name='menu' color='red' size={30} style={{ marginLeft: 20 }} />
+        <Feather name='menu' size={30} style={{ color: '#EEEEEE', marginLeft: 20 }} />
       </TouchableOpacity>
     ),
   })

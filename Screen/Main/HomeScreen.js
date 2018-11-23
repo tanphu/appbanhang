@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { Feather, FontAwesome } from '@expo/vector-icons';
 
 class HomeScreen extends React.Component {
   constructor(props) {
@@ -9,11 +9,14 @@ class HomeScreen extends React.Component {
   }
   static navigationOptions = ({ navigation }) => ({
     title: "Trang chủ",
+    drawerIcon: ({ tintColor }) => {
+      <FontAwesome name='home' style={{ size: 24, color: tintColor }} />
+    },
     headerLeft: (
       <TouchableOpacity onPress={() => navigation.toggleDrawer()}>
-          <Feather name='menu' color='red' size={30} style={{ marginLeft: 20 }} />
+        <Feather name='menu' size={30} style={{color:'#EEEEEE', marginLeft: 20 }} />
       </TouchableOpacity>
-  ),
+    ),
   })
 
   _Woman = () => {

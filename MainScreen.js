@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons';
-import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator, DrawerItems, Header } from 'react-navigation';
 import HomeScreen from './Screen/Main/HomeScreen';
 import OrderHistory from './Screen/Main/OrderHistory';
 import LoginScreen from './Screen/Main/LoginScreen';
@@ -48,17 +48,17 @@ const HomeNavigator = createStackNavigator(
             headerRight: (
                 <View style={styles.headerR}>
                     <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                 </View>
             ),
             headerStyle: {
-                backgroundColor: '#89da59',
+                backgroundColor: '#095763',
             },
-            headerTintColor: '#ff420e',
+            headerTintColor: '#EEEEEE',
             headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
@@ -79,17 +79,17 @@ const LoginNavigator = createStackNavigator(
             headerRight: (
                 <View style={styles.headerR}>
                     <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                 </View>
             ),
             headerStyle: {
-                backgroundColor: '#89da59',
+                backgroundColor: '#095763',
             },
-            headerTintColor: '#ff420e',
+            headerTintColor: '#EEEEEE',
             headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
@@ -110,17 +110,17 @@ const OrderNavigator = createStackNavigator(
             headerRight: (
                 <View style={styles.headerR}>
                     <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: 'red' }} />
+                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
                     </TouchableOpacity>
                 </View>
             ),
             headerStyle: {
-                backgroundColor: '#89da59',
+                backgroundColor: '#095763',
             },
-            headerTintColor: '#ff420e',
+            headerTintColor: '#EEEEEE',
             headerTitleStyle: {
                 fontWeight: 'bold',
                 fontSize: 20,
@@ -132,10 +132,10 @@ const OrderNavigator = createStackNavigator(
 const CustomDrawerComponent = (props) => (
     <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.drawerH}>
-        <Image source={require('./Image/drawerImage.jpg')}/>
+            <Image source={require('./Image/drawerImage.jpg')} />
         </View>
         <ScrollView>
-            <DrawerItems {...props}/>
+            <DrawerItems {...props} />
         </ScrollView>
     </SafeAreaView>
 )
@@ -147,8 +147,12 @@ const AppDrawerNavigator = createDrawerNavigator(
 
     },
     {
+        drawerWidth: 200,
         initialRouteName: 'Home',
-        contentComponent: CustomDrawerComponent
+        contentComponent: CustomDrawerComponent,
+        contentOptions: {
+            activeTintColor: '#47CF45'
+        }
     }
 )
 
