@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native'
-import { Feather } from '@expo/vector-icons';
-import { createStackNavigator, createDrawerNavigator, DrawerItems, Header } from 'react-navigation';
+import { Feather, FontAwesome, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from './Screen/Main/HomeScreen';
 import OrderHistory from './Screen/Main/OrderHistory';
 import LoginScreen from './Screen/Main/LoginScreen';
@@ -13,13 +13,9 @@ import Detail from './Screen/Main/Product/Detail';
 import Favorite from './Screen/Main/Product/Favorite';
 import Cart from './Screen/Main/Cart';
 import Search from './Screen/Main/Search';
-
+import ButtonComponent from './Component/ButtonComponent'
 class MainScreen extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = { colorHeader: 'red' };
-    }
     render() {
         return (
             <AppDrawerNavigator />
@@ -46,14 +42,7 @@ const HomeNavigator = createStackNavigator(
         initialRouteName: 'Home',
         navigationOptions: ({ navigation }) => ({
             headerRight: (
-                <View style={styles.headerR}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                </View>
+                <ButtonComponent navigation={navigation}/>
             ),
             headerStyle: {
                 backgroundColor: '#095763',
@@ -77,14 +66,7 @@ const LoginNavigator = createStackNavigator(
         initialRouteName: 'LoginScreen',
         navigationOptions: ({ navigation }) => ({
             headerRight: (
-                <View style={styles.headerR}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                </View>
+                <ButtonComponent navigation={navigation}/>
             ),
             headerStyle: {
                 backgroundColor: '#095763',
@@ -108,14 +90,7 @@ const OrderNavigator = createStackNavigator(
         initialRouteName: 'Order',
         navigationOptions: ({ navigation }) => ({
             headerRight: (
-                <View style={styles.headerR}>
-                    <TouchableOpacity onPress={() => navigation.navigate('Favorite')}>
-                        <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => navigation.navigate('Cart')}>
-                        <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
-                    </TouchableOpacity>
-                </View>
+                <ButtonComponent navigation={navigation}/>
             ),
             headerStyle: {
                 backgroundColor: '#095763',
@@ -141,18 +116,38 @@ const CustomDrawerComponent = (props) => (
 )
 const AppDrawerNavigator = createDrawerNavigator(
     {
-        Home: HomeNavigator,
-        Oder: OrderNavigator,
-        Login: LoginNavigator,
-
+        'Trang chủ': {
+            screen: HomeNavigator,
+            navigationOptions: ({ navigation }) => ({
+                drawerIcon: ({ tintColor }) => (
+                    <FontAwesome name='home' size={20} style={{ color: tintColor }} />
+                ),
+            }),
+        },
+        'Lịch sử': {
+            screen: OrderNavigator,
+            navigationOptions: ({ navigation }) => ({
+                drawerIcon: ({ tintColor }) => (
+                    <MaterialIcons name='history' size={20} style={{ color: tintColor }} />
+                ),
+            }),
+        },
+        'Tài khoản': {
+            screen: LoginNavigator,
+            navigationOptions: ({ navigation }) => ({
+                drawerIcon: ({ tintColor }) => (
+                    <FontAwesome name='user' size={20} style={{ color: tintColor }} />
+                ),
+            }),
+        },
     },
     {
         drawerWidth: 200,
-        initialRouteName: 'Home',
+        initialRouteName: 'Trang chủ',
         contentComponent: CustomDrawerComponent,
         contentOptions: {
             activeTintColor: '#47CF45'
-        }
+        },
     }
 )
 
