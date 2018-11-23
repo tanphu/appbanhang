@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-class Woman extends React.Component {
+class Women extends React.Component {
 
   static navigationOptions = {
     title: "Nữ",
@@ -16,7 +16,7 @@ class Woman extends React.Component {
   }
 }
 
-export default Woman;
+export default Women;
 
 const styles = StyleSheet.create({
   container: {
