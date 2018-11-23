@@ -2,17 +2,17 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView } from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
-import HomeScreen from './Main/HomeScreen';
-import OrderHistory from './Main/OrderHistory';
-import LoginScreen from './Main/LoginScreen';
-import WomanProduct from './Main/Product/Women';
-import ManProduct from './Main/Product/Man';
-import KidProduct from './Main/Product/Kid';
-import List from './Main/Product/List';
-import Detail from './Main/Product/Detail';
-import Favorite from './Main/Product/Favorite';
-import Cart from './Main/Cart';
-import Search from './Main/Search';
+import HomeScreen from './Screen/Main/HomeScreen';
+import OrderHistory from './Screen/Main/OrderHistory';
+import LoginScreen from './Screen/Main/LoginScreen';
+import WomanProduct from './Screen/Main/Product/Women';
+import ManProduct from './Screen/Main/Product/Man';
+import KidProduct from './Screen/Main/Product/Kid';
+import List from './Screen/Main/Product/List';
+import Detail from './Screen/Main/Product/Detail';
+import Favorite from './Screen/Main/Product/Favorite';
+import Cart from './Screen/Main/Cart';
+import Search from './Screen/Main/Search';
 
 class MainScreen extends React.Component {
 
@@ -132,7 +132,7 @@ const OrderNavigator = createStackNavigator(
 const CustomDrawerComponent = (props) => (
     <SafeAreaView style={{ flex: 1 }}>
         <View style={styles.drawerH}>
-        <Image source={require('/appbanhang/Image/drawerImage.jpg')}/>
+        <Image source={require('./Image/drawerImage.jpg')}/>
         </View>
         <ScrollView>
             <DrawerItems {...props}/>
