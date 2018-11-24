@@ -13,7 +13,7 @@ import Detail from './Screen/Main/Product/Detail';
 import Favorite from './Screen/Main/Product/Favorite';
 import Cart from './Screen/Main/Cart';
 import Search from './Screen/Main/Search';
-import ButtonComponent from './Component/ButtonComponent'
+import ButtonRight from './Component/ButtonRight'
 class MainScreen extends React.Component {
 
     render() {
@@ -40,9 +40,9 @@ const HomeNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Home',
-        navigationOptions: ({ navigation }) => ({
+        navigationOptions: () => ({
             headerRight: (
-                <ButtonComponent navigation={navigation}/>
+                <ButtonRight />
             ),
             headerStyle: {
                 backgroundColor: '#095763',
@@ -88,9 +88,9 @@ const OrderNavigator = createStackNavigator(
     },
     {
         initialRouteName: 'Order',
-        navigationOptions: ({ navigation }) => ({
+        navigationOptions: () => ({
             headerRight: (
-                <ButtonComponent navigation={navigation}/>
+                <ButtonRight />
             ),
             headerStyle: {
                 backgroundColor: '#095763',
@@ -118,7 +118,7 @@ const AppDrawerNavigator = createDrawerNavigator(
     {
         'Trang chủ': {
             screen: HomeNavigator,
-            navigationOptions: ({ navigation }) => ({
+            navigationOptions: () => ({
                 drawerIcon: ({ tintColor }) => (
                     <FontAwesome name='home' size={20} style={{ color: tintColor }} />
                 ),
@@ -126,7 +126,7 @@ const AppDrawerNavigator = createDrawerNavigator(
         },
         'Lịch sử': {
             screen: OrderNavigator,
-            navigationOptions: ({ navigation }) => ({
+            navigationOptions: () => ({
                 drawerIcon: ({ tintColor }) => (
                     <MaterialIcons name='history' size={20} style={{ color: tintColor }} />
                 ),
@@ -134,7 +134,7 @@ const AppDrawerNavigator = createDrawerNavigator(
         },
         'Tài khoản': {
             screen: LoginNavigator,
-            navigationOptions: ({ navigation }) => ({
+            navigationOptions: () => ({
                 drawerIcon: ({ tintColor }) => (
                     <FontAwesome name='user' size={20} style={{ color: tintColor }} />
                 ),
