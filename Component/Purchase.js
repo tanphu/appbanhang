@@ -1,22 +1,21 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import AddCart from '../../../Component/AddCart';
-class Man extends React.Component {
-  static navigationOptions = {
-    title: "Nam",
+import {withNavigation} from 'react-navigation'
+class Purchase extends React.Component {
 
-  };
 
   render() {
     return (
       <View style={styles.container}>
-        <AddCart/>
+        <TouchableOpacity onPress={this.props.navigation.getParam('Purchase')}>
+          <Text>Purchase</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
 
-export default Man;
+export default withNavigation(Purchase);
 
 const styles = StyleSheet.create({
   container: {
