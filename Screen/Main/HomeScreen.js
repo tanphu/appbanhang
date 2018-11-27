@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, Image, TouchableOpacity } from 'react-native';
-import { Feather, FontAwesome } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 
 class HomeScreen extends React.Component {
