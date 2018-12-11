@@ -1,27 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import {withNavigation} from 'react-navigation'
+import { Text, TouchableOpacity } from 'react-native';
+import { connect } from 'react-redux';
 class AddCart extends React.Component {
 
 
   render() {
     return (
-      <View style={styles.container}>
-        <TouchableOpacity onPress={this.props.navigation.getParam('increaseCount')}>
-          <Text>Add to cart</Text>
-        </TouchableOpacity>
-      </View>
+      <TouchableOpacity style={{ backgroundColor: '#1aff1a', alignItems: 'center' }} onPress={this.props.addItemToCart}>
+        <Text style={{ fontSize: 20, color: '#fff' }}>Mua ngay</Text>
+      </TouchableOpacity>
     );
   }
 }
 
-export default withNavigation(AddCart);
+const mapDispatchToProps = (Dispatch) => {
+  return {
+    addItemToCart: (propduct) => Dispatch({ type: 'ADD_TO_CART', payload: propduct })
+  }
+}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default connect(null, mapDispatchToProps)(AddCart);
+
