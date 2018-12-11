@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View , Button } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import ChangeInfo from './ChangeInfo';
 class User extends React.Component {
@@ -7,12 +7,12 @@ class User extends React.Component {
   _ChangeInfo = () => {
     this.props.navigation.navigate('ChangeInfo');
   }
-  
+
   render() {
     return (
       <View style={styles.container}>
         <Text> User information screen </Text>
-         <Button title="Change info" onPress={this._ChangeInfo} />
+        <Button title="Change info" onPress={this._ChangeInfo} />
       </View>
     );
   }
@@ -20,12 +20,12 @@ class User extends React.Component {
 
 export default UserNavigator = createStackNavigator(
   {
-      User: User,
-      ChangeInfo: ChangeInfo,
+    User: User,
+    ChangeInfo: ChangeInfo,
   },
   {
-      initialRouteName: 'User',
-      headerMode: "none",
+    initialRouteName: 'User',
+    headerMode: "none",
   }
 );
 

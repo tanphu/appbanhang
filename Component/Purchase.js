@@ -3,7 +3,6 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import {withNavigation} from 'react-navigation'
 class Purchase extends React.Component {
 
-
   render() {
     return (
       <View style={styles.container}>
