@@ -8,6 +8,7 @@ import {
   Image,
   TouchableOpacity
 } from 'react-native';
+import { AsyncStorage } from "react-native"
 
 export default class SignIn extends Component {
   constructor(props) {
@@ -17,6 +18,33 @@ export default class SignIn extends Component {
   static navigationOptions = () => ({
     title: "Đăng nhập",
   })
+  _storeData = async (userinfo) => {
+      try {
+        await AsyncStorage.setItem('User',JSON.stringify(userinfo));
+      } catch (error) {
+        // Error saving data
+      }
+    }
+
+  _retrieveData = async () => {
+    try {
+      const value = await AsyncStorage.getItem('User');
+      if (value !== null) {
+        this.setState({userinfo:value})
+      }
+     } catch (error) {
+       // Error retrieving data
+     }
+  }
+
+  _removeData = async (key) => {
+    try {
+      await AsyncStorage.removeItem(key);
+      Alert.alert("Log out thành công")
+    }
+    catch(exception) {
+    }
+  }
 
   async logInFB() {
     try {
@@ -27,13 +55,14 @@ export default class SignIn extends Component {
         permissions,
         declinedPermissions,
       } = await Expo.Facebook.logInWithReadPermissionsAsync('719830388383557', {
-        permissions: ['public_profile'],
+        permissions: ['public_profile']
       });
       if (type === 'success') {
         // Get the user's name using Facebook's Graph API
         const response = await fetch(`https://graph.facebook.com/me?access_token=${token}&fields=id,name,picture.type(large)`);
         const userinfo = await response.json();
         this.setState({ userinfo })
+        this._storeData(userinfo);
         Alert.alert('Logged in!', `Hi ${userinfo.name}!`);
       } else {
         // type === 'cancel'
@@ -44,7 +73,16 @@ export default class SignIn extends Component {
   }
   LogoutFB() {
     this.setState({ userinfo: null });
+    this._removeData('User');
   }
+
+  componentDidMount(){
+  AsyncStorage.getItem("User").then(value => {
+      if(value){
+          this.setState({userinfo: JSON.parse(value) });
+      }
+    })
+  };
 
   renderuserInfo = () => {
     return (
@@ -59,10 +97,22 @@ export default class SignIn extends Component {
     )
   }
 
+  renderuserLogIn= () => {
+    return (
+      <View style={{ alignItems: 'center' }}>
+       <Image
+          source={{ uri: 'https://vignette.wikia.nocookie.net/cso/images/e/e5/Logo_fb.png/revision/latest?cb=20180911105244&path-prefix=id' }}
+          style={{ width: 100, height: 100 }}
+        />
+        <TouchableOpacity style={styles.button} onPress={this.logInFB.bind(this)}><Text style={styles.buttonText}> Sign in with Facebook</Text></TouchableOpacity>
+      </View>
+    )
+  }
+
   render() {
     return (
-      <View style={styles.container}>
-        {!this.state.userinfo ? (<TouchableOpacity style={styles.button} onPress={this.logInFB.bind(this)}><Text style={styles.buttonText}> Sign in with Facebook</Text></TouchableOpacity>) : (this.renderuserInfo())}
+      <View style={styles.container}>   
+        {!this.state.userinfo? (this.renderuserLogIn()) : (this.renderuserInfo())}
       </View>
     )
   }

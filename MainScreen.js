@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image, SafeAreaView, ScrollView, AsyncStorage } from 'react-native'
+import { View, StyleSheet, TouchableOpacity, Image,Text, SafeAreaView, ScrollView, AsyncStorage } from 'react-native'
 import { Feather, FontAwesome, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from './Screen/Main/HomeScreen';
@@ -15,7 +15,7 @@ import Cart from './Screen/Main/Cart';
 import Search from './Screen/Main/Search';
 import ButtonRight from './Component/ButtonRight'
 class MainScreen extends React.Component {
-
+    
     render() {
         
         const HomeNavigator = createStackNavigator(
