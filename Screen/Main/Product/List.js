@@ -1,15 +1,63 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
+import ListItem from '../../../Component/ListItem';
+import firebase from 'firebase';
 class List extends React.Component {
   static navigationOptions = {
     title: "Danh mục",
 
   };
-  render() {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: [],
+      loading: true,
+    }
+  }
+
+  renderItem(item) {
     return (
+      <View style={{ paddingLeft: 10, paddingRight: 10 }}>
+        <ListItem index={index} item={item} />
+      </View>
+    )
+  }
+
+  readData = () => {
+    const itemId = this.props.navigation.getParam('kind', 'No product');
+    firebase.database().ref('/Product/Man/' + itemId).once('value').then(snapshot => {
+      this.setState({ data: snapshot.val() })
+    })
+  }
+
+
+
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ loading: false })
+    }, 1000)
+    this.readData();
+  }
+  render() {
+
+    return (
+
       <View style={styles.container}>
-        <Text> List product screen </Text>
+        {
+          this.state.loading ?
+            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+              <ActivityIndicator size='large' color='#B28F69' />
+            </View>
+
+            :
+            <FlatList
+              numColumns={2}
+              data={this.state.data}
+              renderItem={({ item, index }) => this.renderItem(item)}
+              keyExtractor={(item) => item.id.toString()}
+            />
+        }
       </View>
     );
   }
@@ -21,7 +69,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    paddingTop: 20,
   },
 });
