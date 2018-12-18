@@ -3,10 +3,9 @@ import { Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 class AddCart extends React.Component {
 
-
   render() {
     return (
-      <TouchableOpacity style={{ backgroundColor: '#1aff1a', alignItems: 'center' }} onPress={this.props.addItemToCart}>
+      <TouchableOpacity style={{ backgroundColor: '#1C246D', alignItems: 'center' }} onPress={() => this.props.addItemToCart(this.props.item)}>
         <Text style={{ fontSize: 20, color: '#fff' }}>Mua ngay</Text>
       </TouchableOpacity>
     );

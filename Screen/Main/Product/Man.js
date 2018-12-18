@@ -1,16 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import AddCart from '../../../Component/AddCart';
+import { StyleSheet, View , Button } from 'react-native';
 class Man extends React.Component {
   static navigationOptions = {
     title: "Nam",
 
   };
 
+  _list = (item) => {
+    this.props.navigation.navigate('List', { kind: item, })
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <AddCart/>
+        <Button title='t-shirt' onPress={() => this._list('t-shirt')} />
       </View>
     );
   }
