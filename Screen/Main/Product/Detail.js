@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import AddCart from '../../../Component/AddCart';
 class Detail extends React.Component {
   static navigationOptions = {
     title: "Chi tiết",
@@ -15,9 +16,7 @@ class Detail extends React.Component {
         <Text> {item.name} </Text>
         <Text> {item.description} </Text>
         <Text> Product detail screen </Text>
-        <TouchableOpacity style={{ backgroundColor: '#1aff1a', alignItems: 'center' }} onPress={() => this.props.addItemToCart(item)}>
-          < Text style={{ fontSize: 20, color: '#fff' }}>Mua ngay</Text>
-        </TouchableOpacity >
+        <AddCart item={item}/>
       </View>
     );
   }
