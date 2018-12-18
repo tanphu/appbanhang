@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, TouchableOpacity, Text, View, Dimensions, ImageBackground } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Entypo } from '@expo/vector-icons';
-
+import AddCart from './AddCart';
 const ITEM_WIDTH = Dimensions.get('screen').width
 const ITEM_HEIGHT = Dimensions.get('screen').height
 class ListItems extends React.Component {
@@ -19,9 +19,9 @@ class ListItems extends React.Component {
     render() {
         return (
 
-            <TouchableOpacity key={this.props.index} style={styles.container} onPress={()=>{this.props.navigation.navigate('Detail', {item: this.props.item})}}>
+            <TouchableOpacity style={styles.container} onPress={()=>{this.props.navigation.navigate('Detail', {item: this.props.item})}}>
                 <ImageBackground
-                    style={{ width: ITEM_WIDTH / 2 - 20, height: ITEM_HEIGHT /2 - 150 }}
+                    style={{ width: ITEM_WIDTH / 2 -10, height: ITEM_HEIGHT /2 - 150 }}
                     source={{ uri: this.props.item.image.i1 }}
                 >
                     <View style={{ flexDirection: 'row-reverse', justifyContent: 'space-between', height: 35 , paddingTop:5 }}>
@@ -37,6 +37,7 @@ class ListItems extends React.Component {
                     <Text>{this.props.item.name}</Text>
                     <Text>{this.props.item.trademark}</Text>
                     <Text style={{ fontSize: 15, color: '#ff0000' }}>{this.props.item.price} VND</Text>
+                    <AddCart item={this.props.item}/>
                 </View>
 
             </TouchableOpacity>

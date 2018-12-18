@@ -18,8 +18,8 @@ class List extends React.Component {
 
   renderItem(item) {
     return (
-      <View style={{ paddingLeft: 10, paddingRight: 10 }}>
-        <ListItem index={index} item={item} />
+      <View style={{ paddingLeft: 5, paddingRight: 5 }}>
+        <ListItem item={item} />
       </View>
     )
   }
@@ -54,7 +54,7 @@ class List extends React.Component {
             <FlatList
               numColumns={2}
               data={this.state.data}
-              renderItem={({ item, index }) => this.renderItem(item)}
+              renderItem={({ item }) => this.renderItem(item)}
               keyExtractor={(item) => item.id.toString()}
             />
         }
