@@ -16,6 +16,7 @@ const CartIcon = (props) => (
                 <Text style={{ color: '#FFFFFF' }}>{props.cartItems.length}</Text>
             }
             IconBadgeStyle={styles.IconBadge}
+            Hidden={props.cartItems.length <= 0}
         />
     </TouchableOpacity>
 )
