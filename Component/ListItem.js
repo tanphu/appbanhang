@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Dimensions, ImageBackground } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, View, Dimensions, ImageBackground, Share } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Entypo } from '@expo/vector-icons';
 import AddCart from './AddCart';
