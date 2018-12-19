@@ -31,7 +31,7 @@ class MainScreen extends React.Component {
                 Cart: Cart,
             },
             {
-                initialRouteName: 'Woman',
+                initialRouteName: 'Home',
                 navigationOptions: () => ({
                     headerRight: (
                         <ButtonRight/>
@@ -138,7 +138,7 @@ class MainScreen extends React.Component {
                 initialRouteName: 'Trang chủ',
                 contentComponent: CustomDrawerComponent,
                 contentOptions: {
-                    activeTintColor: '#00277C'
+                    activeTintColor: '#47CF45'
                 },
             }
         )
