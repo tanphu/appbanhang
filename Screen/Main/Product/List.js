@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
 import ListItem from '../../../Component/ListItem';
 import firebase from 'firebase';
+import Loading from '../../../Component/Loading';
 class List extends React.Component {
   static navigationOptions = {
     title: "Danh mục",
@@ -46,10 +47,7 @@ class List extends React.Component {
       <View style={styles.container}>
         {
           this.state.loading ?
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-              <ActivityIndicator size='large' color='#B28F69' />
-            </View>
-
+            <Loading />
             :
             <FlatList
               numColumns={2}
