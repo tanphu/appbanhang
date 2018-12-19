@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Image,Text, SafeAreaView, ScrollView, AsyncStorage } from 'react-native'
-import { Feather, FontAwesome, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { View, StyleSheet, Image, SafeAreaView, ScrollView } from 'react-native'
+import { FontAwesome, MaterialIcons } from '@expo/vector-icons';
 import { createStackNavigator, createDrawerNavigator, DrawerItems } from 'react-navigation';
 import HomeScreen from './Screen/Main/HomeScreen';
 import OrderHistory from './Screen/Main/OrderHistory';
@@ -15,9 +15,9 @@ import Cart from './Screen/Main/Cart';
 import Search from './Screen/Main/Search';
 import ButtonRight from './Component/ButtonRight'
 class MainScreen extends React.Component {
-    
+
     render() {
-        
+
         const HomeNavigator = createStackNavigator(
             {
                 Home: HomeScreen,
@@ -34,7 +34,7 @@ class MainScreen extends React.Component {
                 initialRouteName: 'Home',
                 navigationOptions: () => ({
                     headerRight: (
-                        <ButtonRight/>
+                        <ButtonRight />
                     ),
                     headerStyle: {
                         backgroundColor: '#095763',
@@ -58,7 +58,7 @@ class MainScreen extends React.Component {
                 initialRouteName: 'LoginScreen',
                 navigationOptions: () => ({
                     headerRight: (
-                        <ButtonRight/>
+                        <ButtonRight />
                     ),
                     headerStyle: {
                         backgroundColor: '#095763',
@@ -134,11 +134,11 @@ class MainScreen extends React.Component {
                 },
             },
             {
-                drawerWidth: 200,
+                drawerWidth: 250,
                 initialRouteName: 'Trang chủ',
                 contentComponent: CustomDrawerComponent,
                 contentOptions: {
-                    activeTintColor: '#47CF45'
+                    activeTintColor: '#004E7F'
                 },
             }
         )
