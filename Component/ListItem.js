@@ -36,18 +36,20 @@ class ListItems extends React.Component {
                     source={{ uri: this.props.item.image.i1 }}
                 >
                     <View style={{ flexDirection: 'row-reverse', justifyContent: 'space-between', height: 35, paddingTop: 5 }}>
-                        <TouchableOpacity onPress={this.btnFavorite}>
-                            <Entypo name={this.state.select ? 'heart' : 'heart-outlined'} size={30} color={this.state.select ? '#B39168' : '#004F92'} />
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={() => this.OnShare(this.props.item)}>
-                            <Entypo name='share' size={30} color='#004F92' />
-                        </TouchableOpacity>
+                        <View></View>
+                        <View style={{ flexDirection: 'row' }}>
+                            <TouchableOpacity onPress={() => this.OnShare(this.props.item)}>
+                                <Entypo name='share' size={30} color='#004F92' />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={this.btnFavorite}>
+                                <Entypo name={this.state.select ? 'heart' : 'heart-outlined'} size={30} color={this.state.select ? '#B39168' : '#004F92'} />
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </ImageBackground>
-                <View style={{ flex: 1, paddingBottom: 20 }}>
-                    <Text>{this.props.item.name}</Text>
-                    <Text>{this.props.item.trademark}</Text>
-                    <Text style={{ fontSize: 15, color: '#ff0000' }}>{this.props.item.price} VND</Text>
+                <View style={{ flex: 1, marginBottom: 15, backgroundColor: '#095763' }}>
+                    <Text style={{ alignSelf: 'center', color: '#EFAF58' }}>{this.props.item.trademark}</Text>
+                    <Text style={{ alignSelf: 'center', fontSize: 20, color: '#ff0000' }}>{this.props.item.price} VND</Text>
                     <AddCart item={this.props.item} />
                 </View>
 
