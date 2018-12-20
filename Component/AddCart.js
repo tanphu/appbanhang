@@ -1,13 +1,19 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 class AddCart extends React.Component {
 
   render() {
     return (
-      <TouchableOpacity style={{ backgroundColor: '#1C246D', alignItems: 'center' }} onPress={() => this.props.addItemToCart(this.props.item)}>
-        <Text style={{ fontSize: 20, color: '#fff' }}>Mua ngay</Text>
-      </TouchableOpacity>
+      this.props.set ?
+        <TouchableOpacity style={{ width: '100%', height: '9%', backgroundColor: 'green',justifyContent:'center' ,  alignItems: 'center', shadowOpacity: 0.5, shadowRadius: 15 }} onPress={() => this.props.addItemToCart(this.props.item)}>
+          <Text style={{ fontSize: 30, color: '#fff' }}>Mua ngay</Text>
+        </TouchableOpacity>
+        :
+        <TouchableOpacity onPress={() => this.props.addItemToCart(this.props.item)}>
+          <Entypo name='export' size={30} style={{ color: '#004F92' }} />
+        </TouchableOpacity>
     );
   }
 }

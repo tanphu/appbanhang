@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import ListItem from '../../../Component/ListItem';
 import firebase from 'firebase';
 import Loading from '../../../Component/Loading';

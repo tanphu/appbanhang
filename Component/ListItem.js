@@ -30,13 +30,14 @@ class ListItems extends React.Component {
     render() {
         return (
 
-            <TouchableOpacity style={styles.container} onPress={() => { this.props.navigation.navigate('Detail', { item: this.props.item }) }}>
+            <TouchableOpacity style={styles.container} onPress={() => { this.props.navigation.navigate('Detail', { item: this.props.item, trademark: this.props.item.trademark }) }}>
                 <ImageBackground
                     style={{ width: ITEM_WIDTH / 2 - 10, height: ITEM_HEIGHT / 2 - 150 }}
                     source={{ uri: this.props.item.image.i1 }}
                 >
                     <View style={{ flexDirection: 'row-reverse', justifyContent: 'space-between', height: 35, paddingTop: 5 }}>
-                        <View></View>
+                        <View>
+                            <AddCart set={false} item={this.props.item} /></View>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity onPress={() => this.OnShare(this.props.item)}>
                                 <Entypo name='share' size={30} color='#004F92' />
@@ -48,11 +49,9 @@ class ListItems extends React.Component {
                     </View>
                 </ImageBackground>
                 <View style={{ flex: 1, marginBottom: 15, backgroundColor: '#095763' }}>
-                    <Text style={{ alignSelf: 'center', color: '#EFAF58' }}>{this.props.item.trademark}</Text>
-                    <Text style={{ alignSelf: 'center', fontSize: 20, color: '#ff0000' }}>{this.props.item.price} VND</Text>
-                    <AddCart item={this.props.item} />
+                    <Text style={{ alignSelf: 'center', fontSize: 15, color: '#EFAF58' }}>{this.props.item.trademark}</Text>
+                    <Text style={{ alignSelf: 'center', fontSize: 20, color: '#fff' }}>{this.props.item.price} VND</Text>
                 </View>
-
             </TouchableOpacity>
 
 

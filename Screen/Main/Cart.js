@@ -12,7 +12,7 @@ class Cart extends React.Component {
     return products.map((item, index) => {
       return (
         <View key={index} style={{ padding: 20 }}>
-          <Button title={item.name + " - "} />
+          <Text>{item.name}</Text>
         </View>
       )
     })

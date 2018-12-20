@@ -99,7 +99,7 @@ class MainScreen extends React.Component {
         const CustomDrawerComponent = (props) => (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={styles.drawerH}>
-                    <Image source={require('./Image/drawerImage.jpg')} />
+                    <Image style={{width:'100%' , height:'100%'}} source={require('./Image/drawerImage.jpg')} />
                 </View>
                 <ScrollView>
                     <DrawerItems {...props} />
