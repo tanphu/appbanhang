@@ -4,12 +4,23 @@ import { connect } from 'react-redux';
 import AddCart from '../../../Component/AddCart';
 import { Entypo } from '@expo/vector-icons'
 import Swiper from 'react-native-swiper';
+import firebase from 'firebase';
+import Modal from 'react-native-modal';
 class Detail extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: navigation.getParam('trademark', null),
     };
   };
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      isModalVisible: false,
+    }
+  }
+  _toggleModal = () =>
+    this.setState({ isModalVisible: !this.state.isModalVisible });
 
   OnShare = (item) => {
     Share.share({
@@ -21,6 +32,9 @@ class Detail extends React.Component {
       })
   }
 
+  _detail = () => {
+    this.props.navigation.navigate('DetailProduct');
+  }
   render() {
     const item = this.props.navigation.getParam('item', 'no item');
     return (
@@ -38,18 +52,40 @@ class Detail extends React.Component {
           </View>
           <View style={{ width: '0.5%', backgroundColor: '#095763' }}></View>
           <View style={{ width: '19.5%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => this._detail()}>
               <Text style={{ color: '#004F92', fontSize: 20, fontWeight: 'bold' }}>Chi tiết</Text>
             </TouchableOpacity>
           </View>
         </View>
         <View style={{ height: '0.2%', width: '100%', backgroundColor: '#095763' }}></View>
-        <Swiper style={styles.wrapper} showsButtons={false} horizontal={false}>
+        <Swiper showsButtons={false} horizontal={false} autoplay>
           <Image style={styles.slide} source={{ uri: item.image.i1 }} />
           <Image style={styles.slide} source={{ uri: item.image.i2 }} />
           <Image style={styles.slide} source={{ uri: item.image.i3 }} />
         </Swiper>
-        <AddCart set={true} item={item} />
+        <View style={{ height: '9%', flexDirection: 'row' }} >
+          <TouchableOpacity style={{ backgroundColor: '#fff', width: '30%', alignItems: 'center', justifyContent: 'center' }} onPress={this._toggleModal}>
+            <Text>Size: {this.state.size}</Text>
+          </TouchableOpacity>
+          <AddCart set={true} item={item} />
+        </View>
+
+
+        <Modal isVisible={this.state.isModalVisible}>
+          <View style={{
+            backgroundColor: "white",
+            height: 400,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 4,
+            borderColor: "rgba(0, 0, 0, 0.1)"
+          }}>
+            <Text>Hello!</Text>
+            <TouchableOpacity onPress={this._toggleModal}>
+              <Text>Hide me!</Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
       </View>
     );
   }
@@ -66,10 +102,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
   },
   slide: {
-    height: '100%',
+    flex: 1,
     resizeMode: 'stretch',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });

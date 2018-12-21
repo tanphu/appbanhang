@@ -8,6 +8,7 @@ import LoginScreen from './Screen/Main/LoginScreen';
 import WomanProduct from './Screen/Main/Product/Women';
 import ManProduct from './Screen/Main/Product/Man';
 import KidProduct from './Screen/Main/Product/Kid';
+import DetailProduct from './Screen/Main/Product/DetailProduct';
 import List from './Screen/Main/Product/List';
 import Detail from './Screen/Main/Product/Detail';
 import Favorite from './Screen/Main/Product/Favorite';
@@ -29,6 +30,7 @@ class MainScreen extends React.Component {
                 Favorite: Favorite,
                 Search: Search,
                 Cart: Cart,
+                DetailProduct: DetailProduct,
             },
             {
                 initialRouteName: 'Home',
@@ -99,7 +101,7 @@ class MainScreen extends React.Component {
         const CustomDrawerComponent = (props) => (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={styles.drawerH}>
-                    <Image style={{width:'100%' , height:'100%'}} source={require('./Image/drawerImage.jpg')} />
+                    <Image style={{ width: '100%', height: '100%' }} source={require('./Image/drawerImage.jpg')} />
                 </View>
                 <ScrollView>
                     <DrawerItems {...props} />

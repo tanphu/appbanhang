@@ -7,7 +7,7 @@ class AddCart extends React.Component {
   render() {
     return (
       this.props.set ?
-        <TouchableOpacity style={{ width: '100%', height: '9%', backgroundColor: 'green',justifyContent:'center' ,  alignItems: 'center', shadowOpacity: 0.5, shadowRadius: 15 }} onPress={() => this.props.addItemToCart(this.props.item)}>
+        <TouchableOpacity style={{ width: '70%', height: '100%', backgroundColor: 'green',justifyContent:'center' ,  alignItems: 'center', shadowOpacity: 0.5, shadowRadius: 15 }} onPress={() => this.props.addItemToCart(this.props.item)}>
           <Text style={{ fontSize: 30, color: '#fff' }}>Mua ngay</Text>
         </TouchableOpacity>
         :
