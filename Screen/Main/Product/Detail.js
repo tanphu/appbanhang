@@ -32,8 +32,8 @@ class Detail extends React.Component {
       })
   }
 
-  _detail = () => {
-    this.props.navigation.navigate('DetailProduct');
+  _detail = (item) => {
+    this.props.navigation.navigate('DetailProduct',{ item: item });
   }
   render() {
     const item = this.props.navigation.getParam('item', 'no item');
@@ -52,7 +52,7 @@ class Detail extends React.Component {
           </View>
           <View style={{ width: '0.5%', backgroundColor: '#095763' }}></View>
           <View style={{ width: '19.5%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <TouchableOpacity onPress={() => this._detail()}>
+            <TouchableOpacity onPress={() => this._detail(item)}>
               <Text style={{ color: '#004F92', fontSize: 20, fontWeight: 'bold' }}>Chi tiết</Text>
             </TouchableOpacity>
           </View>
