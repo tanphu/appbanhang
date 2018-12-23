@@ -39,9 +39,9 @@ class MainScreen extends React.Component {
                         <ButtonRight />
                     ),
                     headerStyle: {
-                        backgroundColor: '#095763',
+                        backgroundColor: '#FF198F',
                     },
-                    headerTintColor: '#EEEEEE',
+                    headerTintColor: '#fff',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 20,
@@ -63,9 +63,9 @@ class MainScreen extends React.Component {
                         <ButtonRight />
                     ),
                     headerStyle: {
-                        backgroundColor: '#095763',
+                        backgroundColor: '#ff198f',
                     },
-                    headerTintColor: '#EEEEEE',
+                    headerTintColor: '#fff',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 20,
@@ -87,9 +87,9 @@ class MainScreen extends React.Component {
                         <ButtonRight />
                     ),
                     headerStyle: {
-                        backgroundColor: '#095763',
+                        backgroundColor: '#ff198f',
                     },
-                    headerTintColor: '#EEEEEE',
+                    headerTintColor: '#fff',
                     headerTitleStyle: {
                         fontWeight: 'bold',
                         fontSize: 20,
@@ -140,7 +140,7 @@ class MainScreen extends React.Component {
                 initialRouteName: 'Trang chủ',
                 contentComponent: CustomDrawerComponent,
                 contentOptions: {
-                    activeTintColor: '#004E7F'
+                    activeTintColor: '#ff0082'
                 },
             }
         )

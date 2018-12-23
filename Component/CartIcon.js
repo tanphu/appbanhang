@@ -10,10 +10,10 @@ const CartIcon = (props) => (
     <TouchableOpacity onPress={() => props.navigation.navigate('Cart')}>
         <IconBadge
             MainElement={
-                <Feather name='shopping-cart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
+                <Feather name='shopping-cart' size={30} style={{ marginRight: 10, color: '#EEEEEE' }} />
             }
             BadgeElement={
-                <Text style={{ color: '#FFFFFF' }}>{props.cartItems.length}</Text>
+                <Text style={{ color: '#fff' }}>{props.cartItems.length}</Text>
             }
             IconBadgeStyle={styles.IconBadge}
             Hidden={props.cartItems.length <= 0}
@@ -34,14 +34,14 @@ const styles = StyleSheet.create({
     },
     IconBadge: {
         position: 'absolute',
-        top: 1,
-        right: 0,
-        minWidth: 25,
-        height: 25,
-        borderRadius: 15,
+        left: 20,
+        top: -1,
+        width: 20,
+        height: 20,
+        borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#FF0000'
+        backgroundColor: '#80ff80',
     }
 });
 export default connect(mapStateToProps)(withNavigation(CartIcon));

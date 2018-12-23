@@ -33,7 +33,7 @@ class Detail extends React.Component {
   }
 
   _detail = (item) => {
-    this.props.navigation.navigate('DetailProduct',{ item: item });
+    this.props.navigation.navigate('DetailProduct', { item: item });
   }
   render() {
     const item = this.props.navigation.getParam('item', 'no item');
@@ -46,10 +46,21 @@ class Detail extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={{ width: '0.5%', backgroundColor: '#095763' }}></View>
-          <View style={{ width: '61%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.name}</Text>
-            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'red' }}>{item.price} VND</Text>
-          </View>
+          {
+            item.sale != 0 ?
+              <View style={{ width: '61%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.name}</Text>
+                <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-between' }}>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#ff1919', paddingRight: 10 }}>{item.price - (item.price * item.sale)} VND</Text>
+                  <Text style={{ fontSize: 16, fontWeight: 'bold', color: 'grey', paddingLeft: 10, textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>{item.price} VND</Text>
+                </View>
+              </View>
+              :
+              <View style={{ width: '61%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
+                <Text style={{ fontSize: 20, fontWeight: 'bold' }}>{item.name}</Text>
+                <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'red' }}>{item.price} VND</Text>
+              </View>
+          }
           <View style={{ width: '0.5%', backgroundColor: '#095763' }}></View>
           <View style={{ width: '19.5%', height: '100%', justifyContent: 'center', alignItems: 'center' }}>
             <TouchableOpacity onPress={() => this._detail(item)}>

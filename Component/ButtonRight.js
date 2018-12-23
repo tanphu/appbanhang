@@ -10,7 +10,7 @@ class ButtonRight extends React.Component {
         return (
             <View style={styles.headerR}>
                 <TouchableOpacity onPress={() => { this.props.navigation.navigate('Favorite') }}>
-                    <Feather name='heart' size={30} style={{ marginRight: 20, color: '#EEEEEE' }} />
+                    <Feather name='heart' size={30} style={{ marginRight: 10, color: '#fff' }} />
                 </TouchableOpacity>
                 <CartIcon />
             </View>
