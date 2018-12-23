@@ -3,6 +3,7 @@ import { StyleSheet, View, FlatList } from 'react-native';
 import ListItem from '../../../Component/ListItem';
 import firebase from 'firebase';
 import Loading from '../../../Component/Loading';
+
 class List extends React.Component {
   static navigationOptions = {
     title: "Danh mục",

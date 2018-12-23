@@ -12,7 +12,7 @@ class DetailProduct extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            starCount: 3
+            starCount: 4
         };
     }
 
@@ -30,7 +30,7 @@ class DetailProduct extends React.Component {
                 <ScrollView>
                     <Text>Mô tả sản phẩm</Text>
                     <Text>{item.price}</Text>
-                    <Text>giảm giá</Text>
+                    <Text>Giảm Giá</Text>
                     <Text >{item.description.toString()}</Text>
                     <Text>Bình Luận</Text>
                     <View style={{width:'50%'}}>
