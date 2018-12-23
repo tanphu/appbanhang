@@ -1,8 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, Text } from 'react-native'
-import { createMaterialTopTabNavigator } from 'react-navigation';
-import DetailTab from './Detail/DetailTab';
-import CommentTab from './Detail/CommentTab';
+import { View, ScrollView, Text } from 'react-native'
 import StarRating from 'react-native-star-rating';
 class DetailProduct extends React.Component {
     static navigationOptions = () => ({
@@ -25,7 +22,6 @@ class DetailProduct extends React.Component {
     render() {
         const item = this.props.navigation.getParam('item', 'no item');
         return (
-            // <TabSign />
             <View styles={{ flex: 1 }}>
                 <ScrollView>
                     <Text>Mô tả sản phẩm</Text>
@@ -54,16 +50,6 @@ class DetailProduct extends React.Component {
         );
     }
 }
-
-const TabSign = createMaterialTopTabNavigator(
-    {
-        DetailTab: DetailTab,
-        CommentTab: CommentTab,
-    },
-    {
-        swipeEnabled: true,
-    }
-);
 
 export default DetailProduct;
 

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     IconBadge: {
         position: 'absolute',
         left: 20,
-        top: -1,
+        top: -0.5,
         width: 20,
         height: 20,
         borderRadius: 20,
