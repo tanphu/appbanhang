@@ -10,6 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     firebase.initializeApp(Apikey.firebaseConfig);
+    console.disableYellowBox = true;
   }
   render() {
     return (

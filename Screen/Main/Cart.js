@@ -30,7 +30,7 @@ class Cart extends React.Component {
   total = (products) => {
     var s = 0
     products.map((item) => {
-      s = s + item.price
+      s = s + (item.price - (item.price * item.sale))
       this.setState({ sum: s })
     })
   }
@@ -53,7 +53,8 @@ class Cart extends React.Component {
                   </TouchableOpacity>
                 </View>
                 <Text>{item.name}</Text>
-                <Text style={{ color: '#cc0000', fontSize: 20 }}>{item.price} VND</Text>
+                <Text style={{ color: '#cc0000', fontSize: 20 }}>{item.price - (item.price * item.sale)} VND</Text>
+                <Text style={{ color: '#808080', fontSize: 15, textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>{item.price} VND</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <Text>Kích cỡ: </Text>
                   <Text style={{ paddingRight: 10 }}>{item.size}</Text>
@@ -74,7 +75,7 @@ class Cart extends React.Component {
                 </TouchableOpacity>
               </View>
               <View style={{ width: '60%', height: '100%', justifyContent: "center", alignItems: 'center' }}>
-                <Text style={{ color: '#0000b3' }}>Giao hàng trong 1-3 ngày làm việc</Text>
+                <Text style={{ color: '#01b200' }}>Giao hàng trong 1-3 ngày làm việc</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -88,12 +89,12 @@ class Cart extends React.Component {
       <View style={styles.container}>
         <ScrollView>
           {this.renderProducts(this.props.cartItems)}
-          <View style={{ width: '100%', height: 150 }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          <View style={{ width: '100%', height: 100, justifyContent: 'center', backgroundColor: '#ccffcc' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
               <Text style={{ paddingLeft: 20, fontSize: 15 }}>Tổng cộng ({this.props.cartItems.length})</Text>
               <Text style={{ paddingRight: 20, fontSize: 15, color: 'red' }}>{this.state.sum} VND</Text>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
               <Text style={{ paddingLeft: 20, fontSize: 15 }}>Phí vận chuyển:</Text>
               <Text style={{ paddingRight: 20, fontSize: 15 }}>FREE</Text>
             </View>
