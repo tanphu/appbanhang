@@ -17,6 +17,7 @@ class Detail extends React.Component {
     super(props)
     this.state = {
       isModalVisible: false,
+      style: ''
     }
   }
   _toggleModal = () =>
@@ -78,7 +79,7 @@ class Detail extends React.Component {
           <TouchableOpacity style={{ backgroundColor: '#fff', width: '30%', alignItems: 'center', justifyContent: 'center' }} onPress={this._toggleModal}>
             <Text>Size: {this.state.size}</Text>
           </TouchableOpacity>
-          <AddCart set={true} item={item} />
+          <AddCart set={true} item={item} size={this.state.size} />
         </View>
 
 
@@ -91,7 +92,7 @@ class Detail extends React.Component {
             borderRadius: 4,
             borderColor: "rgba(0, 0, 0, 0.1)"
           }}>
-            <Text>Hello!</Text>
+            <Text></Text>
             <TouchableOpacity onPress={this._toggleModal}>
               <Text>Hide me!</Text>
             </TouchableOpacity>
