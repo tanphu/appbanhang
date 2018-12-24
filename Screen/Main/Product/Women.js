@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import Swiper from 'react-native-swiper';
 import firebase from 'firebase';
 import Loading from '../../../Component/Loading';
@@ -76,7 +76,7 @@ class Women extends React.Component {
               <Text
                 style={{ fontSize: 20, paddingTop: 5, paddingBottom: 5, marginLeft: 10, fontWeight: 'bold', color: '#1B7FDF' }}
               >
-                Sản phẩm bán chạy
+                SẢN PHẨM BÁN CHẠY
             </Text>
 
               <View style={styles.container}>
@@ -102,14 +102,54 @@ class Women extends React.Component {
               <Text
                 style={{ fontSize: 20, paddingTop: 5, paddingBottom: 5, marginLeft: 10, fontWeight: 'bold', }}
               >
-                Thương hiệu nổi bật
+                THƯƠNG HIỆU NỔI BẬT
             </Text>
 
               <Text
                 style={{ fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', }}
               >
-                Danh mục sản phẩm
+                DANH MỤC SẢN PHẨM
             </Text>
+
+            <View>
+
+              <View style={{flex: 1, flexDirection: 'row', marginBottom:10, paddingLeft:10, paddingRight:10, marginTop:10, justifyContent:'space-between'}}>
+              <TouchableOpacity
+                style={{width: '48%', height: 100}}>
+                <ImageBackground style={{ width: '100%', height: '100%', resizeMode:'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D1.jpg' }} />
+                <View style ={{position:'absolute', alignItems:'center', justifyContent:'center'}}>
+                 <Text style ={{fontSize:30, fontWeight:'bold', textAlign:'center',color:'red'}}>
+                   HÙNG ĐẸP TRAI
+                   </Text>
+                   </View>
+              </TouchableOpacity>
+              <TouchableOpacity
+                 style={{width: '48%', height: 100}} >
+                 <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D1.jpg' }} />
+                  <Text style ={{fontSize:30, fontWeight:'bold', textAlign:'center',color:'white'}}>
+                   AHIHI
+                   </Text>
+              </TouchableOpacity>
+            </View>
+
+            <View style ={{flex:1, flexDirection:'row',paddingLeft:10, paddingRight:10, justifyContent:'space-between'}}>
+            <TouchableOpacity
+               style={{width: '48%', height: 100}} >
+               <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D1.jpg' }} />
+                <Text style ={{fontSize:30, fontWeight:'bold', textAlign:'center',color:'white'}}>
+                   AHIHI
+                   </Text>
+            </TouchableOpacity>
+             <TouchableOpacity
+               style={{width: '48%', height: 100}} >
+               <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D1.jpg' }} />
+                <Text style ={{fontSize:30, fontWeight:'bold', textAlign:'center',color:'white'}}>
+                   HÙNG ĐẸP TRAI
+                   </Text>
+            </TouchableOpacity>
+            </View>
+
+          </View>
 
             </ScrollView>
         }
@@ -124,7 +164,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 2,
     flex: 1,
-    backgroundColor: '#F1EDEE',
+    backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
   },
