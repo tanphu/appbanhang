@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 class AddCart extends React.Component {
 
-  Addcart = (item, size) => {
+  Addcart = (item, size, image) => {
     // var newPostKey = firebase.database().ref().child('Order').push().key;
     var newPostKey = item.name
     firebase.database().ref('/Order/' + newPostKey).set({
       color: item.color,
       description: item.description,
       idcart: newPostKey,
-      ima: item.image.fff.i1,
+      ima: image,
       id: item.id,
       selectsize: size,
       image: item.image,
@@ -31,7 +31,7 @@ class AddCart extends React.Component {
       'color': item.color,
       'description': item.color,
       'idcart': newPostKey,
-      'ima': item.image.fff.i1,
+      'ima': image,
       'id': item.id,
       'selectsize': size,
       'image': item.image.fff,
@@ -52,11 +52,11 @@ class AddCart extends React.Component {
   render() {
     return (
       this.props.set ?
-        <TouchableOpacity style={{ width: '70%', height: '100%', backgroundColor: '#01b200', justifyContent: 'center', alignItems: 'center', shadowOpacity: 0.5, shadowRadius: 15 }} onPress={() => this.Addcart(this.props.item, this.props.size)}>
+        <TouchableOpacity style={{ width: '70%', height: '100%', backgroundColor: '#01b200', justifyContent: 'center', alignItems: 'center', shadowOpacity: 0.5, shadowRadius: 15 }} onPress={() => this.Addcart(this.props.item, this.props.size, this.props.image)}>
           <Text style={{ fontSize: 30, color: '#fff' }}>Mua ngay</Text>
         </TouchableOpacity>
         :
-        <TouchableOpacity onPress={() => this.Addcart(this.props.item, this.props.size)}>
+        <TouchableOpacity onPress={() => this.Addcart(this.props.item, this.props.size, this.props.image)}>
           <Entypo name='export' size={30} style={{ color: '#01b200' }} />
         </TouchableOpacity>
     );

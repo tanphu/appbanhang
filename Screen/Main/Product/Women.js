@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Image, ImageBackground } from 'react-native';
 import Swiper from 'react-native-swiper';
 import firebase from 'firebase';
 import Loading from '../../../Component/Loading';
+import ListItem from '../../../Component/ListItem';
 class Women extends React.Component {
 
   static navigationOptions = {
@@ -41,7 +42,7 @@ class Women extends React.Component {
             <ScrollView>
               <Swiper style={{ height: 230 }} showsButtons={true} autoplay={true} autoplayTimeout={8}>
                 <TouchableOpacity style={styles.slide}>
-                  <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={require('../../../Image/Slider1.jpg')} />
+                  <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-WH-buy2get10-H1.jpg' }} />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.slide}>
                   <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={require('../../../Image/Slider2.jpg')} />
@@ -61,13 +62,13 @@ class Women extends React.Component {
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                   <View style={{ flex: 1, flexDirection: "row" }}>
                     <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
-                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D1.jpg' }} />
+                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D1.jpg' }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
-                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D3.jpg' }} />
+                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D2.jpg' }} />
                     </TouchableOpacity>
                     <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
-                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181217-women-D5.jpg' }} />
+                      <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D8.jpg' }} />
                     </TouchableOpacity>
                   </View>
                 </ScrollView>
@@ -84,15 +85,9 @@ class Women extends React.Component {
                   <View style={{ flex: 1, flexDirection: "row" }}>
                     {this.state.data.map(e => {
                       return (
-
-                        <TouchableOpacity key={e.id.toString()} style={{ flex: 3, width: 200, height: 260, marginLeft: 10, marginRight: 10, backgroundColor: '#095763' }} >
-                          <Image style={{ width: '100%', height: 210, resizeMode: 'stretch' }} source={{ uri: e.image.i1 }} />
-                          <View style={{ flex: 1, paddingBottom: 20, alignItems: 'center' }}>
-                            <Text style={{ color: '#EFAF58' }}>{e.trademark}</Text>
-                            <Text style={{ fontSize: 15, color: '#fff' }}>{e.price} VND</Text>
-                          </View>
-                        </TouchableOpacity>
-
+                        <View style={{ paddingLeft: 10, paddingRight: 10 }}>
+                          <ListItem item={e} />
+                        </View>
                       )
                     })}
                   </View>
@@ -100,16 +95,64 @@ class Women extends React.Component {
               </View>
 
               <Text
-                style={{ fontSize: 20, paddingTop: 5, paddingBottom: 5, marginLeft: 10, fontWeight: 'bold', }}
-              >
-                Thương hiệu nổi bật
-            </Text>
-
-              <Text
                 style={{ fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', }}
               >
                 Danh mục sản phẩm
             </Text>
+
+              <View>
+                <View style={{ flex: 1, flexDirection: 'row', marginBottom: 10, paddingLeft: 10, paddingRight: 10, marginTop: 10, justifyContent: 'space-between' }}>
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'red' }}>
+                    <ImageBackground
+                      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                      blurRadius={0.2}
+                      source={require('../../../Image/longdress.png')}
+                    >
+                      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Đầm</Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'green' }} >
+                    <ImageBackground
+                      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                      blurRadius={0.2}
+                      source={require('../../../Image/dress1.png')}
+                    >
+                      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Váy</Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                </View>
+
+                <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10, paddingRight: 10, justifyContent: 'space-between' }}>
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'blue' }} >
+                    <ImageBackground
+                      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                      blurRadius={0.2}
+                      source={require('../../../Image/tshirtwoman.png')}
+                    >
+                      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo thun</Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'yellow' }} >
+                    <ImageBackground
+                      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                      blurRadius={0.2}
+                      source={require('../../../Image/coat.png')}
+                    >
+                      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo khoác</Text>
+                      </View>
+                    </ImageBackground>
+                  </TouchableOpacity>
+                </View>
+
+              </View>
+
 
             </ScrollView>
         }

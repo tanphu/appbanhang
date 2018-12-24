@@ -22,17 +22,18 @@ class Cart extends React.Component {
   componentDidMount() {
     this.total(this.props.cartItems)
   }
-  Remove = (item) => {
-    firebase.database().ref('/Order/' + item.idcart).remove(),
-      this.props.removeItem(item)
+  Remove = (item, product) => {
+    firebase.database().ref('/Order/' + item.idcart).remove()
+    this.props.removeItem(item)
+    this.total(product)
   }
 
   total = (products) => {
     var s = 0
     products.map((item) => {
       s = s + (item.price - (item.price * item.sale))
-      this.setState({ sum: s })
     })
+    this.setState({ sum: s })
   }
 
   renderProducts = (products) => {
@@ -48,7 +49,7 @@ class Cart extends React.Component {
               <View style={{ width: '60%', height: '100%' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <Text style={{ justifyContent: 'center', fontSize: 15, fontWeight: 'bold' }}>{item.trademark}</Text>
-                  <TouchableOpacity style={{ justifyContent: 'center' }} onPress={() => this.Remove(item)}>
+                  <TouchableOpacity style={{ justifyContent: 'center' }} onPress={() => this.Remove(item, this.props.cartItems)}>
                     <EvilIcons name='trash' size={30} color='#004F92' />
                   </TouchableOpacity>
                 </View>

@@ -85,8 +85,8 @@ class DetailProduct extends React.Component {
                     {
                         item.sale != 0 ?
                             <View style={{ flexDirection: 'row', paddingLeft: 10 }}>
-                                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ff1919', paddingRight: 10 }}>{item.price} VND</Text>
-                                <Text style={{ fontSize: 20, textDecorationLine: 'line-through', textDecorationStyle: 'solid', color: 'gray' }}>{item.price - (item.price * item.sale)} VND</Text>
+                                <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ff1919', paddingRight: 10 }}>{item.price - (item.price * item.sale)} VND</Text>
+                                <Text style={{ fontSize: 20, textDecorationLine: 'line-through', textDecorationStyle: 'solid', color: 'gray' }}>{item.price} VND</Text>
                             </View>
                             :
                             <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#ff1919', paddingLeft: 10 }}>{item.price}</Text>

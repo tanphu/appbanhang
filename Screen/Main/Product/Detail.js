@@ -30,8 +30,8 @@ class Detail extends React.Component {
   OnShare = (item) => {
     Share.share({
       title: 'share',
-      url: item.image.fff.i1,
-      message: item.image.fff.i1,
+      url: this.state.image.i1,
+      message: this.state.image.i1,
     }, {
         dialogTitle: 'Share this awesome content'
       })
@@ -69,7 +69,7 @@ class Detail extends React.Component {
                 <View style={{ width: 38, height: 38, backgroundColor: '#' + e }}>
                 </View>
               </TouchableOpacity>
-            )
+            ) 
           })
         }
       </View>
@@ -79,11 +79,12 @@ class Detail extends React.Component {
   componentDidMount() {
     const item = this.props.navigation.getParam('item', 'no item');
     this.setState({ color: item.color.split('-')[0].trim() })
+    console.log(this.state.color)
     this.getImage(item, item.color.split('-')[0].trim())
   }
 
   getImage = (item, color) => {
-    firebase.database().ref('/Product/Man/t-shirt/' + item.id + '/image/' + color).once('value').then(snapshot => {
+    firebase.database().ref('/Product/' + item.who + '/' + item.type + '/' + item.id + '/image/' + color).once('value').then(snapshot => {
       this.setState({ image: snapshot.val() })
     })
   }
@@ -131,7 +132,7 @@ class Detail extends React.Component {
           <TouchableOpacity style={{ backgroundColor: '#fff', width: '30%', alignItems: 'center', justifyContent: 'center' }} onPress={this._toggleModal}>
             <Text style={{ fontSize: 20 }}>Size: {this.state.size}</Text>
           </TouchableOpacity>
-          <AddCart set={true} item={item} size={this.state.size} />
+          <AddCart set={true} item={item} size={this.state.size} image={this.state.image.i1} />
         </View>
 
 
@@ -150,7 +151,7 @@ class Detail extends React.Component {
             <View style={{ width: '100%', height: '60%' }}>
               {this.renderSize(item.size)}
             </View>
-            <View style={{ width: '100%', height: '20%', flexDirection: 'row' , paddingBottom:5 }}>
+            <View style={{ width: '100%', height: '20%', flexDirection: 'row', paddingBottom: 5 }}>
               <View style={{ paddingLeft: 10, width: '30%', height: '100%', justifyContent: 'center' }}>
                 <Text>Màu:</Text>
               </View>

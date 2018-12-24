@@ -34,12 +34,12 @@ class ListItems extends React.Component {
         return (
             <TouchableOpacity style={styles.container} onPress={() => { this.props.navigation.navigate('Detail', { item: this.props.item, trademark: this.props.item.trademark }) }}>
                 <ImageBackground
-                    style={{ width: ITEM_WIDTH / 2 - 10, height: ITEM_HEIGHT / 2 - 150 }}
+                    style={{ width: ITEM_WIDTH / 2 - 10, height: ITEM_HEIGHT / 2 - 200 }}
                     source={{ uri: this.props.item.image.i1 }}
                 >
                     <View style={{ flexDirection: 'row-reverse', justifyContent: 'space-between', height: 35, paddingTop: 5 }}>
                         <View>
-                            <AddCart set={false} item={this.props.item} size={this.props.item.size.split('-')[0].trim()} /></View>
+                            <AddCart set={false} item={this.props.item} size={this.props.item.size.split('-')[0].trim()} image={this.props.item.image.i1} /></View>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity onPress={() => this.OnShare(this.props.item)}>
                                 <Entypo name='share' size={30} color='#01b200' />
