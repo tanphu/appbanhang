@@ -1,11 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Share, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Share, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import AddCart from '../../../Component/AddCart';
 import { Entypo } from '@expo/vector-icons'
 import Swiper from 'react-native-swiper';
 import firebase from 'firebase';
 import Modal from 'react-native-modal';
+const ITEM_WIDTH = Dimensions.get('screen').width
+
 class Detail extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
@@ -17,7 +19,9 @@ class Detail extends React.Component {
     super(props)
     this.state = {
       isModalVisible: false,
-      style: ''
+      size: 'S',
+      color: '',
+      image: [],
     }
   }
   _toggleModal = () =>
@@ -26,8 +30,8 @@ class Detail extends React.Component {
   OnShare = (item) => {
     Share.share({
       title: 'share',
-      url: item.image.i1,
-      message: item.image.i1,
+      url: item.image.fff.i1,
+      message: item.image.fff.i1,
     }, {
         dialogTitle: 'Share this awesome content'
       })
@@ -36,6 +40,54 @@ class Detail extends React.Component {
   _detail = (item) => {
     this.props.navigation.navigate('DetailProduct', { item: item });
   }
+
+  renderSize = (size) => {
+    array = size.split('-')
+    return (
+      <View style={{ width: '100%', height: '100%', flexDirection: 'column' }}>
+        {
+          array.map(e => {
+
+            return (
+              <TouchableOpacity style={{ marginTop: 5, marginBottom: 5, borderWidth: 1, alignItems: 'center' }} onPress={() => this.setState({ size: e })}>
+                <Text style={{ fontSize: 15 }}>{e}</Text>
+              </TouchableOpacity>
+            )
+          })
+        }
+      </View>
+    )
+  }
+  renderColor = (color, item) => {
+    array = color.split('-')
+    return (
+      <View style={{ width: '100%', height: '100%', flexDirection: 'row', alignItems: 'center' }}>
+        {
+          array.map(e => {
+            return (
+              <TouchableOpacity style={{ marginRight: 5, borderWidth: 1, borderColor: 'black' }} onPress={() => this.getImage(item, e)}>
+                <View style={{ width: 20, height: 20, backgroundColor: '#' + e }}>
+                </View>
+              </TouchableOpacity>
+            )
+          })
+        }
+      </View>
+    )
+  }
+
+  componentDidMount() {
+    const item = this.props.navigation.getParam('item', 'no item');
+    this.setState({ color: item.color.split('-')[0].trim() })
+    this.getImage(item, item.color.split('-')[0].trim())
+  }
+
+  getImage = (item, color) => {
+    firebase.database().ref('/Product/Man/t-shirt/' + item.id + '/image/' + color).once('value').then(snapshot => {
+      this.setState({ image: snapshot.val() })
+    })
+  }
+
   render() {
     const item = this.props.navigation.getParam('item', 'no item');
     return (
@@ -71,9 +123,9 @@ class Detail extends React.Component {
         </View>
         <View style={{ height: '0.2%', width: '100%', backgroundColor: '#095763' }}></View>
         <Swiper showsButtons={false} horizontal={false} autoplay>
-          <Image style={styles.slide} source={{ uri: item.image.i1 }} />
-          <Image style={styles.slide} source={{ uri: item.image.i2 }} />
-          <Image style={styles.slide} source={{ uri: item.image.i3 }} />
+          <Image style={styles.slide} source={{ uri: this.state.image.i1 }} />
+          <Image style={styles.slide} source={{ uri: this.state.image.i2 }} />
+          <Image style={styles.slide} source={{ uri: this.state.image.i3 }} />
         </Swiper>
         <View style={{ height: '9%', flexDirection: 'row' }} >
           <TouchableOpacity style={{ backgroundColor: '#fff', width: '30%', alignItems: 'center', justifyContent: 'center' }} onPress={this._toggleModal}>
@@ -83,19 +135,29 @@ class Detail extends React.Component {
         </View>
 
 
-        <Modal isVisible={this.state.isModalVisible}>
+        <Modal style={{ paddingLeft: ITEM_WIDTH / 2 - 120 }} onBackdropPress={() => this.setState({ isModalVisible: false })} isVisible={this.state.isModalVisible}>
           <View style={{
             backgroundColor: "white",
-            height: 400,
-            justifyContent: "center",
-            alignItems: "center",
-            borderRadius: 4,
-            borderColor: "rgba(0, 0, 0, 0.1)"
+            flexDirection: 'column',
+            width: 200,
+            height: 250,
+            justifyContent: 'space-between',
+            borderColor: "rgba(0, 0, 0, 0.1)",
           }}>
-            <Text></Text>
-            <TouchableOpacity onPress={this._toggleModal}>
-              <Text>Hide me!</Text>
-            </TouchableOpacity>
+            <View style={{ width: '100%', height: '20%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#47ED73' }}>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Kích cỡ</Text>
+            </View>
+            <View style={{ width: '100%', height: '65%' }}>
+              {this.renderSize(item.size)}
+            </View>
+            <View style={{ width: '100%', height: '15%', flexDirection: 'row' }}>
+              <View style={{ paddingLeft: 10, width: '30%', height: '100%', justifyContent: 'center' }}>
+                <Text>Màu:</Text>
+              </View>
+              <View style={{ paddingLeft: 20, height: '100%', justifyContent: 'center' }}>
+                {this.renderColor(item.color, item)}
+              </View>
+            </View>
           </View>
         </Modal>
       </View>
