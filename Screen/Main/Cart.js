@@ -57,7 +57,7 @@ class Cart extends React.Component {
                 <Text style={{ color: '#808080', fontSize: 15, textDecorationLine: 'line-through', textDecorationStyle: 'solid' }}>{item.price} VND</Text>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <Text>Kích cỡ: </Text>
-                  <Text style={{ paddingRight: 10 }}>{item.size}</Text>
+                  <Text style={{ paddingRight: 10 }}>{item.selectsize}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                   <Text>Số lượng: </Text>
@@ -88,20 +88,30 @@ class Cart extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView>
-          {this.renderProducts(this.props.cartItems)}
-          <View style={{ width: '100%', height: 100, justifyContent: 'center', backgroundColor: '#ccffcc' }}>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
-              <Text style={{ paddingLeft: 20, fontSize: 15 }}>Tổng cộng ({this.props.cartItems.length})</Text>
-              <Text style={{ paddingRight: 20, fontSize: 15, color: 'red' }}>{this.state.sum} VND</Text>
+
+          {this.props.cartItems.length > 0
+            ?
+            <View style={{ flex: 1 }}>
+              {this.renderProducts(this.props.cartItems)}
+              <View style={{ width: '100%', height: 100, justifyContent: 'center', backgroundColor: '#ccffcc' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
+                  <Text style={{ paddingLeft: 20, fontSize: 15 }}>Tổng cộng ({this.props.cartItems.length})</Text>
+                  <Text style={{ paddingRight: 20, fontSize: 15, color: 'red' }}>{this.state.sum} VND</Text>
+                </View>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
+                  <Text style={{ paddingLeft: 20, fontSize: 15 }}>Phí vận chuyển:</Text>
+                  <Text style={{ paddingRight: 20, fontSize: 15 }}>FREE</Text>
+                </View>
+              </View>
+              <Button block success>
+                <Text>Primary</Text>
+              </Button>
             </View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingTop: 10 }}>
-              <Text style={{ paddingLeft: 20, fontSize: 15 }}>Phí vận chuyển:</Text>
-              <Text style={{ paddingRight: 20, fontSize: 15 }}>FREE</Text>
+            :
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+              <Text style={{ fontSize: 30, color: '#004F92' }}>Giỏ hàng đang trống</Text>
             </View>
-          </View>
-          <Button block success>
-            <Text>Primary</Text>
-          </Button>
+          }
         </ScrollView>
 
       </View>

@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     headerR: {
         flex: 1,
         flexDirection: 'row',
-        paddingRight:13,
+        paddingRight:20,
     },
 });
 export default withNavigation(ButtonRight);
