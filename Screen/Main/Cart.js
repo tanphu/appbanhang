@@ -40,10 +40,10 @@ class Cart extends React.Component {
     return products.map((item, index) => {
       return (
         <View key={index} style={{ flex: 1, width: ITEM_WIDTH - 10, height: 200, margin: 5, borderWidth: 1.5, borderColor: 'black' }}>
-          <TouchableOpacity style={{ shadowOpacity: 1, shadowRadius: 15 }} onPress={() => { this.props.navigation.navigate('Detail', { item: item, trademark: item.trademark }) }}>
+          <TouchableOpacity onPress={() => { this.props.navigation.navigate('Detail', { item: item, trademark: item.trademark }) }}>
             <View style={{ height: '70%', flexDirection: 'row' }}>
-              <View style={{ width: '40%', height: '100%' }}>
-                <Image style={{ flex: 1, resizeMode: 'center', margin: 5 }} source={{ uri: item.ima }} />
+              <View style={{ width: '40%', height: '100%', alignItems: 'center', justifyContent: 'center', marginTop: 5 }}>
+                <Image style={{ width: 100, height: 150, resizeMode: 'center' }} source={{ uri: item.ima }} />
               </View>
               <View style={{ width: '60%', height: '100%' }}>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -86,11 +86,12 @@ class Cart extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <ScrollView>
 
-          {this.props.cartItems.length > 0
-            ?
+      this.props.cartItems.length > 0
+        ?
+        <View style={styles.container}>
+          <ScrollView>
+
             <View style={{ flex: 1 }}>
               {this.renderProducts(this.props.cartItems)}
               <View style={{ width: '100%', height: 100, justifyContent: 'center', backgroundColor: '#ccffcc' }}>
@@ -107,14 +108,15 @@ class Cart extends React.Component {
                 <Text>Primary</Text>
               </Button>
             </View>
-            :
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Text style={{ fontSize: 30, color: '#004F92' }}>Giỏ hàng đang trống</Text>
-            </View>
-          }
-        </ScrollView>
+          </ScrollView>
 
-      </View>
+        </View>
+        :
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Image style={{ width: 80, height: 80, resizeMode: 'center' }} source={require('../../Image/shopping.jpg')} />
+          <Text style={{ fontSize: 30, color: '#004F92' }}>Giỏ hàng đang trống</Text>
+        </View>
+
     );
   }
 }
