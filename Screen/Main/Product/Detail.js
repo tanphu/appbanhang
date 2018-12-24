@@ -46,10 +46,10 @@ class Detail extends React.Component {
     return (
       <View style={{ width: '100%', height: '100%', flexDirection: 'column' }}>
         {
-          array.map(e => {
+          array.map((e, index) => {
 
             return (
-              <TouchableOpacity style={{ marginTop: 5, marginBottom: 5, borderWidth: 1, alignItems: 'center' }} onPress={() => this.setState({ size: e })}>
+              <TouchableOpacity key={index} style={{ backgroundColor: '#d9d9d9', marginTop: 5, marginBottom: 5, alignItems: 'center' }} onPress={() => this.setState({ size: e })}>
                 <Text style={{ fontSize: 15 }}>{e}</Text>
               </TouchableOpacity>
             )
@@ -63,10 +63,10 @@ class Detail extends React.Component {
     return (
       <View style={{ width: '100%', height: '100%', flexDirection: 'row', alignItems: 'center' }}>
         {
-          array.map(e => {
+          array.map((e, index) => {
             return (
-              <TouchableOpacity style={{ marginRight: 5, borderWidth: 1, borderColor: 'black' }} onPress={() => this.getImage(item, e)}>
-                <View style={{ width: 20, height: 20, backgroundColor: '#' + e }}>
+              <TouchableOpacity key={index} style={{ marginRight: 5, borderWidth: 1, borderColor: 'black' }} onPress={() => this.getImage(item, e)}>
+                <View style={{ width: 38, height: 38, backgroundColor: '#' + e }}>
                 </View>
               </TouchableOpacity>
             )
@@ -122,35 +122,35 @@ class Detail extends React.Component {
           </View>
         </View>
         <View style={{ height: '0.2%', width: '100%', backgroundColor: '#095763' }}></View>
-        <Swiper showsButtons={false} horizontal={false} autoplay>
+        <Swiper showsButtons={false} horizontal={true} autoplay>
           <Image style={styles.slide} source={{ uri: this.state.image.i1 }} />
           <Image style={styles.slide} source={{ uri: this.state.image.i2 }} />
           <Image style={styles.slide} source={{ uri: this.state.image.i3 }} />
         </Swiper>
         <View style={{ height: '9%', flexDirection: 'row' }} >
           <TouchableOpacity style={{ backgroundColor: '#fff', width: '30%', alignItems: 'center', justifyContent: 'center' }} onPress={this._toggleModal}>
-            <Text>Size: {this.state.size}</Text>
+            <Text style={{ fontSize: 20 }}>Size: {this.state.size}</Text>
           </TouchableOpacity>
           <AddCart set={true} item={item} size={this.state.size} />
         </View>
 
 
-        <Modal style={{ paddingLeft: ITEM_WIDTH / 2 - 120 }} onBackdropPress={() => this.setState({ isModalVisible: false })} isVisible={this.state.isModalVisible}>
+        <Modal style={{ paddingLeft: ITEM_WIDTH / 2 - 170 }} onBackdropPress={() => this.setState({ isModalVisible: false })} isVisible={this.state.isModalVisible}>
           <View style={{
             backgroundColor: "white",
             flexDirection: 'column',
-            width: 200,
+            width: 300,
             height: 250,
             justifyContent: 'space-between',
             borderColor: "rgba(0, 0, 0, 0.1)",
           }}>
             <View style={{ width: '100%', height: '20%', alignItems: 'center', justifyContent: 'center', backgroundColor: '#47ED73' }}>
-              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Kích cỡ</Text>
+              <Text style={{ fontSize: 15, fontWeight: 'bold', color: '#fff' }}>Kích cỡ/ Màu sắc</Text>
             </View>
-            <View style={{ width: '100%', height: '65%' }}>
+            <View style={{ width: '100%', height: '60%' }}>
               {this.renderSize(item.size)}
             </View>
-            <View style={{ width: '100%', height: '15%', flexDirection: 'row' }}>
+            <View style={{ width: '100%', height: '20%', flexDirection: 'row' , paddingBottom:5 }}>
               <View style={{ paddingLeft: 10, width: '30%', height: '100%', justifyContent: 'center' }}>
                 <Text>Màu:</Text>
               </View>

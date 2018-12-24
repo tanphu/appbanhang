@@ -24,6 +24,8 @@ class AddCart extends React.Component {
       rate: item.rate,
       size: item.size,
       trademark: item.trademark,
+      type: item.type,
+      who: item.who,
     })
     var newitem = {
       'color': item.color,
@@ -41,6 +43,8 @@ class AddCart extends React.Component {
       'rate': item.rate,
       'size': item.size,
       'trademark': item.trademark,
+      'type': item.type,
+      'who': item.who,
     }
     this.props.removeItem(newitem)
     this.props.addItemToCart(newitem)
