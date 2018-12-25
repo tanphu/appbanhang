@@ -41,13 +41,13 @@ class Women extends React.Component {
             :
             <ScrollView>
               <Swiper style={{ height: 230 }} showsButtons={true} autoplay={true} autoplayTimeout={8}>
-                <TouchableOpacity style={styles.slide}>
+                <TouchableOpacity style={styles.slide} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'deal1' }) }}>
                   <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-WH-buy2get10-H1.jpg' }} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.slide}>
+                <TouchableOpacity style={styles.slide} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'deal2' }) }}>
                   <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={require('../../../Image/Slider2.jpg')} />
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.slide}>
+                <TouchableOpacity style={styles.slide} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'deal3' }) }}>
                   <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={require('../../../Image/Slider3.jpg')} />
                 </TouchableOpacity>
               </Swiper>
@@ -61,13 +61,13 @@ class Women extends React.Component {
               <View style={styles.container}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                   <View style={{ flex: 1, flexDirection: "row" }}>
-                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
+                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'tendency1' }) }}>
                       <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D1.jpg' }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
+                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'tendency2' }) }}>
                       <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D2.jpg' }} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} >
+                    <TouchableOpacity style={{ flex: 3, width: 220, height: 220, marginLeft: 5, marginRight: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'tendency3' }) }}>
                       <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/image/20181224-women-D8.jpg' }} />
                     </TouchableOpacity>
                   </View>
@@ -113,7 +113,7 @@ class Women extends React.Component {
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
-                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'green' }} >
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'green' }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'longdress' }) }}>
                     <ImageBackground
                       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                       blurRadius={0.2}
@@ -127,7 +127,7 @@ class Women extends React.Component {
                 </View>
 
                 <View style={{ flex: 1, flexDirection: 'row', paddingLeft: 10, paddingRight: 10, justifyContent: 'space-between' }}>
-                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'blue' }} >
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'blue' }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 't-shirt' }) }}>
                     <ImageBackground
                       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                       blurRadius={0.2}
@@ -138,7 +138,7 @@ class Women extends React.Component {
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
-                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'yellow' }} >
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'yellow' }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'coat' }) }}>
                     <ImageBackground
                       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                       blurRadius={0.2}

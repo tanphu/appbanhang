@@ -40,7 +40,7 @@ class Kid extends React.Component {
             :
             <ScrollView>
               <Swiper style={{ height: 230 }} showsButtons={false} autoplay={true} autoplayTimeout={8}>
-                <TouchableOpacity style={styles.slide}>
+                <TouchableOpacity style={styles.slide} onPress={() => { this.props.navigation.navigate('List', { who: 'Kid', type: 'deal1' }) }}>
                   <Image style={{ width: '100%', height: '100%', resizeMode: 'stretch' }} source={{ uri: 'https://static.robins.vn/cms/20170710-kids-girls-H1.jpg' }} />
                 </TouchableOpacity>
               </Swiper>
@@ -53,7 +53,7 @@ class Kid extends React.Component {
 
               <View style={{ width: '100%', height: 800, flexDirection: 'column', justifyContent: 'space-between' }}>
 
-                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }}>
+                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Kid', type: 'G0-24' }) }}>
                   <ImageBackground
                     style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
 
@@ -62,7 +62,7 @@ class Kid extends React.Component {
                   </ImageBackground>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }}>
+                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Kid', type: 'G6-12' }) }}>
                   <ImageBackground
                     style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
 
@@ -71,7 +71,7 @@ class Kid extends React.Component {
                   </ImageBackground>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }}>
+                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Kid', type: 'B0-24' }) }}>
                   <ImageBackground
                     style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
 
@@ -80,7 +80,7 @@ class Kid extends React.Component {
                   </ImageBackground>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }}>
+                <TouchableOpacity style={{ flex: 1, backgroundColor: 'green', margin: 5 }} onPress={() => { this.props.navigation.navigate('List', { who: 'Kid', type: 'B6-12' }) }}>
                   <ImageBackground
                     style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
 
