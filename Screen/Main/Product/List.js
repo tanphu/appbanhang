@@ -27,8 +27,9 @@ class List extends React.Component {
   }
 
   readData = () => {
-    const itemId = this.props.navigation.getParam('kind', 'No product');
-    firebase.database().ref('/Product/Man/' + itemId).once('value').then(snapshot => {
+    const who = this.props.navigation.getParam('who', 'No product');
+    const itemId = this.props.navigation.getParam('type', 'No product');
+    firebase.database().ref('/Product/' + who + '/' + itemId).once('value').then(snapshot => {
       this.setState({ data: snapshot.val() })
     })
   }

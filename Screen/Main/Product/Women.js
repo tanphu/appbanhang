@@ -102,7 +102,7 @@ class Women extends React.Component {
 
               <View>
                 <View style={{ flex: 1, flexDirection: 'row', marginBottom: 10, paddingLeft: 10, paddingRight: 10, marginTop: 10, justifyContent: 'space-between' }}>
-                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'red' }}>
+                  <TouchableOpacity style={{ width: '48%', height: 100, backgroundColor: 'red' }} onPress={() => { this.props.navigation.navigate('List', { who: 'Woman', type: 'dress' }) }}>
                     <ImageBackground
                       style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
                       blurRadius={0.2}
