@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, Image, TouchableOpacity } from 'react-native';
-import { Button } from 'native-base';
+import { StyleSheet, Text, View, ScrollView, Dimensions, Image, TouchableOpacity, TextInput, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { Entypo, EvilIcons } from '@expo/vector-icons';
+import Modal from 'react-native-modal';
 import firebase from 'firebase';
 const ITEM_WIDTH = Dimensions.get('screen').width
 
@@ -15,6 +15,7 @@ class Cart extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      isModalVisible: false,
       sum: 0,
     }
   }
@@ -22,8 +23,13 @@ class Cart extends React.Component {
   componentDidMount() {
     this.total(this.props.cartItems)
   }
+
+  _toggleModal = () => { this.setState({ isModalVisible: !this.state.isModalVisible }); }
+
+
+
   Remove = (item, product) => {
-    firebase.database().ref('/Order/' + item.idcart).remove()
+
     this.props.removeItem(item)
     this.setState({ sum: this.state.sum - (item.price - (item.price * item.sale)) })
   }
@@ -34,6 +40,27 @@ class Cart extends React.Component {
       s = s + (item.price - (item.price * item.sale))
     })
     this.setState({ sum: s })
+  }
+
+  messenger = (products) => {
+    Alert.alert(
+      'Thông báo',
+      'Thanh toán thành công',
+      [
+
+        { text: 'Cancel', style: 'cancel' },
+        { text: 'OK', onPress: () => this.Sum(products) },
+      ],
+      { cancelable: false }
+    )
+    this.setState({ isModalVisible: !this.state.isModalVisible });
+  }
+
+  Sum = (products) => {
+    products.map((item) => {
+      firebase.database().ref('/Order/' + item.idcart).remove()
+      this.props.removeItem(item)
+    })
   }
 
   renderProducts = (products) => {
@@ -105,18 +132,93 @@ class Cart extends React.Component {
                   <Text style={{ paddingRight: 20, fontSize: 15 }}>FREE</Text>
                 </View>
               </View>
-              <Button block success>
-                <Text>Primary</Text>
-              </Button>
+              <TouchableOpacity style={{ backgroundColor: 'green', width: '100%', height: 50, justifyContent: 'center', alignItems: 'center' }} onPress={() => this._toggleModal()}>
+                <Text style={{ color: '#fff', fontSize: 18 }}>Thanh Toán</Text>
+              </TouchableOpacity>
+
+              <Modal onBackdropPress={() => this.setState({ isModalVisible: false })} isVisible={this.state.isModalVisible}>
+                <View style={{
+                  backgroundColor: "white",
+                  height: '70%',
+                  flexDirection: 'column',
+                  borderColor: "rgba(0, 0, 0, 0.1)",
+                }}>
+                  <Text style={{ alignSelf: 'center', fontSize: 25, paddingTop: 20, paddingBottom: 20, color: '#ff198f' }}>Thông tin thanh toán</Text>
+                  <Text style={{ fontSize: 25 }}>
+                    Tên:
+                </Text>
+                  <TextInput
+                    placeholderTextColor='#292929'
+                    editable={true}
+                    maxLength={200}
+                    style={{
+                      fontSize: 15,
+                      height: 30,
+                      backgroundColor: '#fff',
+                      borderWidth: 1
+                    }}
+                    underlineColorAndroid={'transparent'} />
+                  <Text style={{ fontSize: 25 }}>
+                    Địa chỉ:
+                </Text>
+                  <TextInput
+                    placeholderTextColor='#292929'
+                    editable={true}
+                    maxLength={200}
+                    style={{
+                      height: 30,
+                      fontSize: 15,
+                      backgroundColor: '#fff',
+                      borderWidth: 1
+                    }}
+                    underlineColorAndroid={'transparent'} />
+                  <Text style={{ fontSize: 25 }}>
+                    Email:
+                </Text >
+                  <TextInput
+                    placeholderTextColor='#292929'
+                    editable={true}
+                    maxLength={200}
+                    style={{
+                      height: 30,
+                      fontSize: 15,
+                      backgroundColor: '#fff',
+                      borderWidth: 1
+                    }}
+                    underlineColorAndroid={'transparent'} />
+
+                  <Text style={{ fontSize: 25 }}>
+                    Điện thoại:
+                </Text>
+                  <TextInput
+                    placeholderTextColor='#292929'
+                    editable={true}
+                    maxLength={200}
+                    style={{
+                      borderWidth: 1,
+                      fontSize: 15,
+                      backgroundColor: '#fff',
+                    }}
+                    underlineColorAndroid={'transparent'} />
+                  <Text style={{ fontSize: 25 }}>
+                    Phương thức thanh toán:
+                </Text>
+                  <TouchableOpacity style={{ backgroundColor: 'green', width: '100%', height: 50, justifyContent: 'center', alignItems: 'center' }} onPress={() => this.messenger(this.props.cartItems)}>
+                    <Text style={{ color: '#fff', fontSize: 18 }}>Xác nhận</Text>
+                  </TouchableOpacity>
+                </View>
+              </Modal>
             </View>
           </ScrollView>
 
-        </View>
+        </View >
         :
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Image style={{ width: 80, height: 80, resizeMode: 'center' }} source={require('../../Image/shopping.jpg')} />
           <Text style={{ fontSize: 30, color: '#004F92' }}>Giỏ hàng đang trống</Text>
         </View>
+
+
 
     );
   }
