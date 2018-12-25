@@ -25,7 +25,7 @@ class Cart extends React.Component {
   Remove = (item, product) => {
     firebase.database().ref('/Order/' + item.idcart).remove()
     this.props.removeItem(item)
-    this.total(product)
+    this.setState({ sum: this.state.sum - (item.price - (item.price * item.sale)) })
   }
 
   total = (products) => {

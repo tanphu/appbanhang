@@ -83,9 +83,9 @@ class Women extends React.Component {
               <View style={styles.container}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                   <View style={{ flex: 1, flexDirection: "row" }}>
-                    {this.state.data.map(e => {
+                    {this.state.data.map((e, index) => {
                       return (
-                        <View style={{ paddingLeft: 10, paddingRight: 10 }}>
+                        <View key={index} style={{ paddingLeft: 10, paddingRight: 10 }}>
                           <ListItem item={e} />
                         </View>
                       )
