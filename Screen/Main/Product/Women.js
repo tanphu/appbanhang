@@ -95,7 +95,7 @@ class Women extends React.Component {
               </View>
 
               <Text
-                style={{ fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', }}
+                style={{ fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', color: '#1B7FDF' }}
               >
                 Danh mục sản phẩm
             </Text>
@@ -109,7 +109,7 @@ class Women extends React.Component {
                       source={require('../../../Image/longdress.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Đầm</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Đầm</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -120,7 +120,7 @@ class Women extends React.Component {
                       source={require('../../../Image/dress1.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Váy</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Váy</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -134,7 +134,7 @@ class Women extends React.Component {
                       source={require('../../../Image/tshirtwoman.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo thun</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Áo thun</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -145,7 +145,7 @@ class Women extends React.Component {
                       source={require('../../../Image/coat.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo khoác</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Áo khoác</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>

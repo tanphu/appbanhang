@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity, ImageBackground } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import firebase from 'firebase';
 import { connect } from 'react-redux';
@@ -57,11 +57,39 @@ class HomeScreen extends React.Component {
           this.state.loading ?
             <Loading />
             :
-            <View style={styles.container}>
-              <Text> Home screen </Text>
-              <Button title="Go to woman product" onPress={this._Woman} />
-              <Button title="Go to man product" onPress={this._Man} />
-              <Button title="Go to kid product" onPress={this._Kid} />
+            <View style={{ width: '100%', height: '100%', justifyContent: 'space-between' }} >
+              <TouchableOpacity style={{ width: '100%', height: '33%', backgroundColor: 'blue', borderRadius: 10, borderWidth: 1 }} onPress={this._Woman}>
+                <ImageBackground
+                  style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                  source={{ uri: 'https://static.robins.vn/cms/image/20180910-HP-Women-DESK.jpg' }}
+                >
+                  <View style={{ justifyContent: 'center', alignItems: 'center', borderColor: '#fff', borderWidth: 2, width: 200, height: 50 }}>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#ff198f' }}>Hàng nữ</Text>
+                  </View>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{ width: '100%', height: '33%', backgroundColor: 'green', borderRadius: 10, borderWidth: 1 }} onPress={this._Man}>
+                <ImageBackground
+                  style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                  source={{ uri: 'https://static.robins.vn/cms/image/20180910-HP-Men-DESK.jpg' }}
+                >
+                  <View style={{ justifyContent: 'center', alignItems: 'center', borderColor: '#fff', borderWidth: 2, width: 150, height: 50 }}>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#ff198f' }}>Hàng nam</Text>
+                  </View>
+                </ImageBackground>
+              </TouchableOpacity>
+
+              <TouchableOpacity style={{ width: '100%', height: '33%', backgroundColor: 'blue', borderRadius: 10, borderWidth: 1 }} onPress={this._Kid}>
+                <ImageBackground
+                  style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
+                  source={{ uri: 'https://static.robins.vn/cms/image/20180910-HP-Kids-DESK.jpg' }}
+                >
+                  <View style={{ justifyContent: 'center', alignItems: 'center', borderColor: '#fff', borderWidth: 2, width: 200, height: 50 }}>
+                    <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#ff198f' }}>Trẻ em</Text>
+                  </View>
+                </ImageBackground>
+              </TouchableOpacity>
             </View>
         }
       </View>

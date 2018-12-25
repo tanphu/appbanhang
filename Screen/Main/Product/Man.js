@@ -98,7 +98,9 @@ class Man extends React.Component {
               </View>
 
               <Text
-                style={{ fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', }}
+                style={{
+                  fontSize: 20, marginBottom: 10, marginLeft: 10, fontWeight: 'bold', color: '#1B7FDF'
+                }}
               >
                 Danh mục sản phẩm
             </Text>
@@ -112,7 +114,7 @@ class Man extends React.Component {
                       source={require('../../../Image/tshirtmen.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo thun</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Áo thun</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -123,7 +125,7 @@ class Man extends React.Component {
                       source={require('../../../Image/jean.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Quần jean</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Quần jean</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -137,7 +139,7 @@ class Man extends React.Component {
                       source={require('../../../Image/trousers.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Quần tây</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Quần tây</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
@@ -148,7 +150,7 @@ class Man extends React.Component {
                       source={require('../../../Image/shirt.png')}
                     >
                       <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#fff' }}>Áo sơ mi</Text>
+                        <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#01b200' }}>Áo sơ mi</Text>
                       </View>
                     </ImageBackground>
                   </TouchableOpacity>
