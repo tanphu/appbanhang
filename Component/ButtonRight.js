@@ -9,6 +9,9 @@ class ButtonRight extends React.Component {
 
         return (
             <View style={styles.headerR}>
+                <TouchableOpacity onPress={() => { this.props.navigation.navigate('Search') }}>
+                    <Feather name='search' size={30} style={{ marginRight: 10, color: '#fff' }} />
+                </TouchableOpacity>
                 <TouchableOpacity onPress={() => { this.props.navigation.navigate('Favorite') }}>
                     <Feather name='heart' size={30} style={{ marginRight: 10, color: '#fff' }} />
                 </TouchableOpacity>
@@ -22,7 +25,7 @@ const styles = StyleSheet.create({
     headerR: {
         flex: 1,
         flexDirection: 'row',
-        paddingRight:20,
+        paddingRight: 20,
     },
 });
 export default withNavigation(ButtonRight);
